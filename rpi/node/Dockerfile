@@ -2,7 +2,7 @@ FROM resin/rpi-raspbian
 MAINTAINER flochtililoch
 
 # Node
-ENV NODE_VERSION 4.2.1
+ENV NODE_VERSION 5.3.0
 ENV PROC_VERSION armv6l
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz /
 RUN \
@@ -12,5 +12,3 @@ RUN \
 
 # Define working directory
 WORKDIR /data
-
-# Define default command
