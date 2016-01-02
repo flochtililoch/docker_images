@@ -1,6 +1,6 @@
 # LIRC WEB
 # Build: docker build -t flochtililoch/lirc_web .
-# Run: docker run -p 3000:3000 --device /dev/mem:/dev/mem -v /lib/modules:/lib/modules --rm --privileged -it flochtililoch/lirc_web
+# Run: docker run --restart=always -d -p 3000:3000 --device /dev/mem:/dev/mem -v /lib/modules:/lib/modules --privileged -it flochtililoch/lirc_web
 ########
 
 FROM resin/rpi-raspbian
