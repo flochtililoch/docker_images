@@ -8,8 +8,18 @@
   "macros": {
     "Watch TV": [
       [ "TV", "KEY_POWER" ],
-      [ "delay", 500 ],
       [ "SPEAKERS", "KEY_POWER" ]
+    ],
+    "Watch Blu-Ray": [
+      [ "BLURAY", "KEY_POWER" ],
+      [ "SPEAKERS", "KEY_POWER" ],
+      [ "TV", "KEY_POWER" ],
+      [ "delay", 500 ],
+      [ "TV", "KEY_CYCLEWINDOWS" ],
+      [ "delay", 100 ],
+      [ "TV", "KEY_CYCLEWINDOWS" ],
+      [ "delay", 100 ],
+      [ "TV", "KEY_SELECT" ]
     ]
   },
   "commandLabels": {
@@ -44,7 +54,7 @@
       "KEY_POWER": "Power",
       "KEY_MUTE": "Mute",
       "KEY_VOLUMEUP": "+",
-      "KEY_VOLUMEUP": "-"
+      "KEY_VOLUMEDOWN": "-"
     },
     "TV": {
       "KEY_POWER": "Power",
@@ -90,6 +100,7 @@
        "KEY_9",
        "KEY_0",
        "KEY_AUDIO",
+       "KEY_OPTION",
        "KEY_DISPLAYTOGGLE",
        "KEY_YELLOW",
        "KEY_BLUE",
