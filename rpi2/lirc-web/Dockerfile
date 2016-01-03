@@ -16,7 +16,4 @@ RUN \
   # Install lirc-web
   npm install -g lirc_web
 
-# LIRC Configuration
-COPY etc/lirc/*.conf  /etc/lirc/
-
 CMD /etc/init.d/lirc start && lirc_web
