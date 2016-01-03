@@ -1,9 +1,4 @@
-# Homebridge
-# Build: docker build -t flochtililoch/homebridge .
-# Run: docker run --restart=always -d -p 51826:51826 --device /dev/mem:/dev/mem -v /lib/modules:/lib/modules -v /var/run/dbus:/var/run/dbus --privileged -it --net=host flochtililoch/homebridge
-########
-
-FROM flochtililoch/node_armv6l:4.2.1
+FROM flochtililoch/rpi-node:5.3.0
 MAINTAINER flochtililoch
 
 RUN \
