@@ -100,6 +100,7 @@ docker run -d \
            --device /dev/mem:/dev/mem \
            -v /lib/modules:/lib/modules \
            -v ~/docker_images/config/lirc:/etc/lirc \
+           -v ~/docker_images/config/lirc-web:/root \
            flochtililoch/rpi-lirc-web
 ```
 
@@ -123,5 +124,6 @@ docker run -d \
            --device /dev/mem:/dev/mem \
            -v /lib/modules:/lib/modules \
            -v ~/docker_images/config/lirc:/etc/lirc \
+           -v ~/docker_images/config/lirc-web:/root \
            flochtililoch/rpi2-lirc-web
 ```
