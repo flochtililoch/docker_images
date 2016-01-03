@@ -43,7 +43,15 @@ docker build -t flochtililoch/rpi-homebridge rpi/homebridge
 #### Run
 
 ```bash
-docker run -p 51826:51826 -v ~/docker_images/config/homebridge:/root/.homebridge -v /var/run/dbus:/var/run/dbus --privileged -it --net=host flochtililoch/rpi-homebridge
+docker run -d \
+           -it \
+           --restart=always \
+           --privileged \
+           --net=host \
+           -p 51826:51826 \
+           -v ~/docker_images/config/homebridge:/root/.homebridge \
+           -v /var/run/dbus:/var/run/dbus \
+          flochtililoch/rpi-homebridge
 ```
 
 ### RPI-2
@@ -57,7 +65,15 @@ docker build -t flochtililoch/rpi2-homebridge rpi2/homebridge
 #### Run
 
 ```bash
-docker run -p 51826:51826 -v ~/docker_images/config/homebridge:/root/.homebridge -v /var/run/dbus:/var/run/dbus --privileged -it --net=host flochtililoch/rpi2-homebridge
+docker run -d \
+           -it \
+           --restart=always \
+           --privileged \
+           --net=host \
+           -p 51826:51826 \
+           -v ~/docker_images/config/homebridge:/root/.homebridge \
+           -v /var/run/dbus:/var/run/dbus \
+          flochtililoch/rpi2-homebridge
 ```
 
 ## LIRC Web
@@ -73,7 +89,15 @@ docker build -t flochtililoch/rpi-lirc-web rpi/lirc-web
 #### Run
 
 ```bash
-docker run --restart=always -d -p 3000:3000 --device /dev/mem:/dev/mem -v /lib/modules:/lib/modules --privileged -it flochtililoch/rpi-lirc-web
+docker run -d \
+           -it \
+           --restart=always \
+           --privileged \
+           -p 3000:3000 \
+           --device /dev/mem:/dev/mem \
+           -v /lib/modules:/lib/modules \
+           -v ~/docker_images/config/lirc:/etc/lirc \
+           flochtililoch/rpi-lirc-web
 ```
 
 ### RPI-2
@@ -87,5 +111,13 @@ docker build -t flochtililoch/rpi2-lirc-web rpi2/lirc-web
 #### Run
 
 ```bash
-docker run --restart=always -d -p 3000:3000 --device /dev/mem:/dev/mem -v /lib/modules:/lib/modules --privileged -it flochtililoch/rpi2-lirc-web
+docker run -d \
+           -it \
+           --restart=always \
+           --privileged \
+           -p 3000:3000 \
+           --device /dev/mem:/dev/mem \
+           -v /lib/modules:/lib/modules \
+           -v ~/docker_images/config/lirc:/etc/lirc \
+           flochtililoch/rpi2-lirc-web
 ```
