@@ -45,6 +45,7 @@ docker build -t flochtililoch/rpi-homebridge rpi/homebridge
 ```bash
 docker run -d \
            -it \
+           --name homebridge \
            --restart=always \
            --privileged \
            --net=host \
@@ -67,6 +68,7 @@ docker build -t flochtililoch/rpi2-homebridge rpi2/homebridge
 ```bash
 docker run -d \
            -it \
+           --name homebridge \
            --restart=always \
            --privileged \
            --net=host \
@@ -91,6 +93,7 @@ docker build -t flochtililoch/rpi-lirc-web rpi/lirc-web
 ```bash
 docker run -d \
            -it \
+           --name lirc-web \
            --restart=always \
            --privileged \
            -p 3000:3000 \
@@ -113,6 +116,7 @@ docker build -t flochtililoch/rpi2-lirc-web rpi2/lirc-web
 ```bash
 docker run -d \
            -it \
+           --name lirc-web \
            --restart=always \
            --privileged \
            -p 3000:3000 \

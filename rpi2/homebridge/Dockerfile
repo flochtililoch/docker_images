@@ -14,4 +14,4 @@ RUN \
   apt-get install -y bluez bluetooth usbutils libudev-dev && \
   npm install homebridge-misfit-bolt -g
 
-CMD homebridge
+CMD hciconfig hci0 up && homebridge
