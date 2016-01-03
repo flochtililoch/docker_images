@@ -14,7 +14,4 @@ RUN \
   apt-get install -y bluez bluetooth usbutils libudev-dev && \
   npm install homebridge-misfit-bolt -g
 
-# Homebridge Configuration
-COPY root/.homebridge/config.json  /root/.homebridge/
-
 CMD homebridge
