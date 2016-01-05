@@ -8,10 +8,10 @@ RUN \
 
   # Install Homebridge
   apt-get install -y git python build-essential libavahi-compat-libdnssd-dev && \
-  npm install homebridge -g && \
+  npm install homebridge@0.2.13 -g && \
 
   # Install Homebridge Misfit Bolt plugin
   apt-get install -y bluez bluetooth usbutils libudev-dev && \
-  npm install homebridge-misfit-bolt -g
+  npm install homebridge-misfit-bolt@0.0.6 -g
 
 CMD hciconfig hci0 up && homebridge

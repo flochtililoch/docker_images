@@ -14,6 +14,6 @@ RUN \
   echo 'lirc_rpi gpio_in_pin=${gpio_in} gpio_out_pin=${gpio_out}' >> /etc/modules && \
 
   # Install lirc-web
-  npm install -g lirc_web
+  npm install -g lirc_web@0.2.3
 
 CMD /etc/init.d/lirc start && lirc_web
