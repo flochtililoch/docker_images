@@ -18,6 +18,6 @@ RUN \
   npm install homebridge@0.2.13 -g && \
 
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.0.6 -g
+  npm install homebridge-misfit-bolt@0.0.8 -g
 
 CMD hciconfig hci0 up && homebridge
