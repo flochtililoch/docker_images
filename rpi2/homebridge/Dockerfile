@@ -1,4 +1,4 @@
-FROM flochtililoch/rpi2-node:5.3.0
+FROM flochtililoch/rpi2-node:5.5.0
 MAINTAINER flochtililoch
 
 RUN \
@@ -15,9 +15,9 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.2.13 -g && \
+  npm install homebridge@0.2.15 -g && \
 
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.0.8 -g
+  npm install homebridge-misfit-bolt@0.0.9 -g
 
 CMD hciconfig hci0 up && homebridge

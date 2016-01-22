@@ -1,4 +1,4 @@
-FROM flochtililoch/rpi-node:5.3.0
+FROM flochtililoch/rpi-node:5.5.0
 MAINTAINER flochtililoch
 
 ENV gpio_in=23 gpio_out=22
