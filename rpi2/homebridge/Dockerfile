@@ -15,9 +15,14 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.2.15 -g && \
+  npm install homebridge@0.3.1 -g
 
+RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.0.9 -g
+  npm install homebridge-misfit-bolt@0.0.12 -g
+
+RUN \
+  # Install Homebridge Wink plugin
+  npm install homebridge-wink@1.1.1 -g
 
 CMD hciconfig hci0 up && homebridge
