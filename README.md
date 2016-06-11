@@ -2,128 +2,19 @@
 
 ## Node
 
-### RPI
+[RPI](rpi/node/README.md) / [RPI2](rpi2/node/README.md)
 
-#### Build
-
-```bash
-docker build -t flochtililoch/rpi-node rpi/node
-```
-
-#### Run
-
-```bash
-docker run -it flochtililoch/rpi-node bash
-```
-
-### RPI-2
-
-#### Build
-
-```bash
-docker build -t flochtililoch/rpi2-node rpi2/node
-```
-
-#### Run
-
-```bash
-docker run -it flochtililoch/rpi2-node bash
-```
 
 ## Homebridge
 
-### RPI
+[RPI](rpi/homebridge/README.md) / [RPI2](rpi2/homebridge/README.md)
 
-#### Build
-
-```bash
-docker build -t flochtililoch/rpi-homebridge rpi/homebridge
-```
-
-#### Run
-
-```bash
-docker run -d \
-           -it \
-           --name homebridge \
-           --restart=always \
-           --privileged \
-           --net=host \
-           -p 51826:51826 \
-           -v ~/docker_images/config/homebridge:/root/.homebridge \
-           -v /var/run/dbus:/var/run/dbus \
-          flochtililoch/rpi-homebridge
-```
-
-### RPI-2
-
-#### Build
-
-```bash
-docker build -t flochtililoch/rpi2-homebridge rpi2/homebridge
-```
-
-#### Run
-
-```bash
-docker run -d \
-           -it \
-           --name homebridge \
-           --restart=always \
-           --privileged \
-           --net=host \
-           -p 51826:51826 \
-           -v ~/docker_images/config/homebridge:/root/.homebridge \
-           -v /var/run/dbus:/var/run/dbus \
-          flochtililoch/rpi2-homebridge
-```
 
 ## LIRC Web
 
-### RPI
+[RPI](rpi/lirc-web/README.md) / [RPI2](rpi2/lirc-web/README.md)
 
-#### Build
+## Misfit Bolt HTTP
 
-```bash
-docker build -t flochtililoch/rpi-lirc-web rpi/lirc-web
-```
+[RPI2](rpi2/misfit-bolt-http/README.md)
 
-#### Run
-
-```bash
-docker run -d \
-           -it \
-           --name lirc-web \
-           --restart=always \
-           --privileged \
-           -p 3000:3000 \
-           --device /dev/mem:/dev/mem \
-           -v /lib/modules:/lib/modules \
-           -v ~/docker_images/config/lirc:/etc/lirc \
-           -v ~/docker_images/config/lirc-web:/root \
-           flochtililoch/rpi-lirc-web
-```
-
-### RPI-2
-
-#### Build
-
-```bash
-docker build -t flochtililoch/rpi2-lirc-web rpi2/lirc-web
-```
-
-#### Run
-
-```bash
-docker run -d \
-           -it \
-           --name lirc-web \
-           --restart=always \
-           --privileged \
-           -p 3000:3000 \
-           --device /dev/mem:/dev/mem \
-           -v /lib/modules:/lib/modules \
-           -v ~/docker_images/config/lirc:/etc/lirc \
-           -v ~/docker_images/config/lirc-web:/root \
-           flochtililoch/rpi2-lirc-web
-```
