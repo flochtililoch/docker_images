@@ -1,1 +1,1 @@
-docker build -t flochtililoch/rpi-lirc-web .
+docker build -t flochtililoch/rpi-lirc-web $(dirname $0)

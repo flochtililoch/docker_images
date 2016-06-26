@@ -1,1 +1,1 @@
-docker build -t flochtililoch/rpi2-node rpi2/node
+docker build -t flochtililoch/rpi2-node $(dirname $0)

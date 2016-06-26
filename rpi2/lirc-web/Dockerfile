@@ -6,7 +6,7 @@ ENV gpio_in=23 gpio_out=22
 RUN \
   # Update system
   apt-get update && \
-  apt-get upgrade
+  apt-get upgrade -y
 
 RUN \
   # Install LIRC

@@ -4,7 +4,7 @@ MAINTAINER flochtililoch
 RUN \
   # Update system
   apt-get update && \
-  apt-get upgrade
+  apt-get upgrade -y
 
 RUN \
   # Install Misfit Bolt HTTP dependencies

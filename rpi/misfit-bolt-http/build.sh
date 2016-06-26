@@ -1,1 +1,1 @@
-docker build -t flochtililoch/rpi-misfit-bolt-http .
+docker build -t flochtililoch/rpi-misfit-bolt-http $(dirname $0)
