@@ -1,0 +1,1 @@
+docker build -t flochtililoch/rpi2-node rpi2/node

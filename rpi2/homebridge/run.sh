@@ -1,12 +1,3 @@
-# Build
-
-```bash
-docker build -t flochtililoch/rpi2-homebridge rpi2/homebridge
-```
-
-# Run
-
-```bash
 docker run -d \
            -it \
            --name homebridge \
@@ -17,4 +8,3 @@ docker run -d \
            -v ~/docker_images/config/homebridge:/root/.homebridge \
            -v /var/run/dbus:/var/run/dbus \
           flochtililoch/rpi2-homebridge
-```

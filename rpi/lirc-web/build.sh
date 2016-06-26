@@ -1,0 +1,1 @@
+docker build -t flochtililoch/rpi-lirc-web .

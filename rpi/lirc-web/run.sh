@@ -1,12 +1,3 @@
-# Build
-
-```bash
-docker build -t flochtililoch/rpi2-lirc-web rpi2/lirc-web
-```
-
-# Run
-
-```bash
 docker run -d \
            -it \
            --name lirc-web \
@@ -17,5 +8,4 @@ docker run -d \
            -v /lib/modules:/lib/modules \
            -v ~/docker_images/config/lirc:/etc/lirc \
            -v ~/docker_images/config/lirc-web:/root \
-           flochtililoch/rpi2-lirc-web
-```
+           flochtililoch/rpi-lirc-web
