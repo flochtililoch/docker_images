@@ -16,7 +16,7 @@ RUN \
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.1.1 -g
+  npm install homebridge-misfit-bolt@0.1.2 -g
 
 RUN \
   # Install Homebridge Wink plugin
