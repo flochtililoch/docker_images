@@ -12,14 +12,14 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.3.4 -g
+  npm install homebridge@0.3.4 -g --unsafe-perm
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.1.2 -g
+  npm install homebridge-misfit-bolt@0.1.3 -g
 
 RUN \
   # Install Homebridge Wink plugin
   npm install homebridge-wink@1.1.1 -g
 
-CMD homebridge
+CMD DEBUG=* homebridge

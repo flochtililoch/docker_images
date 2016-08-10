@@ -15,7 +15,7 @@
             "accessories": [{
               "id": "20c38f8afa69",
               "name": "Bolt",
-              "baseUrl": "http://localhost:3000/20c38f8afa69"
+              "baseUrl": "http://localhost:3001/20c38f8afa69"
             }]
         }
     ]
