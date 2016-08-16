@@ -1,4 +1,4 @@
-FROM flochtililoch/rpi-node:5.5.0
+FROM flochtililoch/armv7l-node:5.5.0
 MAINTAINER flochtililoch
 
 RUN \
@@ -17,9 +17,5 @@ RUN \
 RUN \
   # Install Homebridge Misfit Bolt plugin
   npm install homebridge-misfit-bolt@0.1.3 -g
-
-RUN \
-  # Install Homebridge Wink plugin
-  npm install homebridge-wink@1.1.1 -g
 
 CMD DEBUG=* homebridge

@@ -1,0 +1,1 @@
+docker run -it flochtililoch/armv6l-node bash

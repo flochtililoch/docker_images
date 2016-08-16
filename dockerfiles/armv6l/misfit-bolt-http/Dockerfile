@@ -1,4 +1,4 @@
-FROM flochtililoch/rpi-node:5.5.0
+FROM flochtililoch/armv6l-node:5.5.0
 MAINTAINER flochtililoch
 
 RUN \

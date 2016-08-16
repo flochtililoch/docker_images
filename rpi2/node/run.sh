@@ -1,1 +1,0 @@
-docker run -it flochtililoch/rpi2-node bash

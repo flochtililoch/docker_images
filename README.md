@@ -1,20 +1,39 @@
-# Docker Images
+# Docker Files
 
-## Node
+Repository hosting Dockerfile and few script helping to build, debug and run containers.
 
-[RPI](rpi/node/) / [RPI2](rpi2/node/)
+## Platforms
 
+- `armv6l`: Raspberry Pi
+- `armv7l`: Raspberry Pi 2
 
-## Homebridge
+## Containers
 
-[RPI](rpi/homebridge/md) / [RPI2](rpi2/homebridge/)
+- `homebridge`: Homebridge (with misfit-bolt and wink plugins)
+- `lirc-web`: LIRC Web
+- `misfit-bolt-http`: Misfit Bolt HTTP
+- `node`: NodeJS
 
+## Build
 
-## LIRC Web
+```bash
+./bin/build.sh <CONTAINER>
+```
 
-[RPI](rpi/lirc-web/) / [RPI2](rpi2/lirc-web/)
+## Debug
 
+```bash
+./bin/debug.sh <CONTAINER>
+```
 
-## Misfit Bolt HTTP
+## Run
 
-[RPI](rpi/misfit-bolt-http/) / [RPI2](rpi2/misfit-bolt-http/)
+```bash
+./bin/run.sh <CONTAINER>
+```
+
+## Stop & Clean
+
+```bash
+./bin/clean.sh <CONTAINER>
+```
