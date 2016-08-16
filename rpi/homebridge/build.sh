@@ -1,1 +1,0 @@
-docker build -t flochtililoch/rpi-homebridge $(dirname $0)
