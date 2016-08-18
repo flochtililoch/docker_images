@@ -13,6 +13,6 @@ RUN \
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install misfit-bolt-http@1.0.0 -g
+  npm install misfit-bolt-http@1.0.1 -g
 
 CMD hciconfig hci0 up && DEBUG=*misfit* misfit-bolt-http -p 3001

@@ -16,6 +16,6 @@ RUN \
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.1.3 -g
+  npm install homebridge-misfit-bolt@0.1.4 -g
 
 CMD DEBUG=* homebridge
