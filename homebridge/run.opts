@@ -1,0 +1,8 @@
+-d
+-it
+--restart=always
+--privileged
+--net=host
+-p 51826:51826
+-v ~/dockerfiles/lirc-web/config/homebridge:/root/.homebridge
+-v /var/run/dbus:/var/run/dbus

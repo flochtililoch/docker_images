@@ -1,1 +1,0 @@
-docker run -it flochtililoch/armv7l-node bash
