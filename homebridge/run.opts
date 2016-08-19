@@ -4,5 +4,5 @@
 --privileged
 --net=host
 -p 51826:51826
--v ~/dockerfiles/lirc-web/config/homebridge:/root/.homebridge
+-v ~/dockerfiles/homebridge/config:/root/.homebridge
 -v /var/run/dbus:/var/run/dbus

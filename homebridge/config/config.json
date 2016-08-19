@@ -6,7 +6,7 @@
         "pin": "415-25-981"
     },
 
-    "description": "TODO",
+    "description": "Homebridge",
 
     "platforms": [
         {
