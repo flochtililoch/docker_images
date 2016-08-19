@@ -1,10 +1,9 @@
 #!/bin/bash
 
-MAINTAINER=flochtililoch
+MAINTAINER=$(cat MAINTAINER)
 CONTAINER=$(basename $@)
 PLATFORM=$(uname -m)
-DOCKERFILES="../dockerfiles"
-OPTIONS=$(cat $DOCKERFILES/$CONTAINER/run.opts)
+OPTIONS=$(cat $CONTAINER/run.opts)
 RUN="docker run --name=$CONTAINER $OPTIONS $MAINTAINER/$PLATFORM-$CONTAINER"
 
 echo "Starting container $CONTAINER"

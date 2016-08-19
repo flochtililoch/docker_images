@@ -12,7 +12,7 @@ RUN \
   bluez bluetooth usbutils libudev-dev
 
 RUN \
-  # Install Homebridge Misfit Bolt plugin
+  # Install Misfit Bolt HTTP
   npm install misfit-bolt-http@1.0.1 -g
 
 CMD hciconfig hci0 up && DEBUG=*misfit* misfit-bolt-http -p 3001
