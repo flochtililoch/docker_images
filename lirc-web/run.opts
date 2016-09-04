@@ -1,9 +1,8 @@
--d
--it
+--detach
 --restart=always
 --privileged
--p 3000:3000
+--publish 3000:3000
 --device /dev/mem:/dev/mem
--v /lib/modules:/lib/modules
--v ~/dockerfiles/lirc-web/config/lirc:/etc/lirc
--v ~/dockerfiles/lirc-web/config/lirc-web:/root
+--volume /lib/modules:/lib/modules
+--volume ~/dockerfiles/lirc-web/config/lirc:/etc/lirc
+--volume ~/dockerfiles/lirc-web/config/lirc-web:/root
