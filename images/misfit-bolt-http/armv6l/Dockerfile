@@ -7,7 +7,7 @@ RUN \
   apt-get upgrade -y
 
 RUN \
-  # Install Misfit Bolt HTTP dependencies
+  # Install Bluetooth dependencies
   apt-get install -y git python build-essential \
   bluez bluetooth usbutils libudev-dev
 
@@ -15,4 +15,4 @@ RUN \
   # Install Misfit Bolt HTTP
   npm install misfit-bolt-http@1.0.1 -g
 
-CMD hciconfig hci0 up && DEBUG=*misfit* misfit-bolt-http -p 3001
+CMD hciconfig hci0 up && misfit-bolt-http

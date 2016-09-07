@@ -1,0 +1,56 @@
+version: "2"
+services:
+  misfit-bolt-http:
+    container_name: misfit-bolt-http
+    image: flochtililoch/armv7l-misfit-bolt-http
+    restart: always
+    command: misfit-bolt-http -p 3001
+    # environment:
+    #   DEBUG: "*misfit*"
+    privileged: true
+    network_mode: host
+    ports:
+    - "3001:3001"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+  homebridge:
+    container_name: homebridge
+    image: flochtililoch/armv7l-homebridge
+    restart: always
+    command: homebridge
+    # environment:
+    #   DEBUG: "*"
+    privileged: true
+    network_mode: host
+    ports:
+    - "51826:51826"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge/config:/root/.homebridge
+    depends_on:
+      - misfit-bolt-http
+  lirc:
+    container_name: lirc
+    image: flochtililoch/armv7l-lirc
+    restart: always
+    command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0
+    privileged: true
+    network_mode: host
+    volumes:
+    - /lib/modules:/lib/modules
+    - ./lirc/config:/etc/lirc
+    - /var/run/lirc:/var/run/lirc
+    devices:
+    - /dev/mem:/dev/mem
+  lirc-web:
+    container_name: lirc-web
+    image: flochtililoch/armv7l-lirc-web
+    restart: always
+    command: lirc_web
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./lirc-web/config:/root
+    - /var/run/lirc:/var/run/lirc
+    depends_on:
+      - lirc

@@ -1,4 +1,4 @@
-FROM flochtililoch/armv6l-node:5.5.0
+FROM flochtililoch/armv7l-node:5.5.0
 MAINTAINER flochtililoch
 
 RUN \
@@ -14,4 +14,4 @@ RUN \
   # Install lirc-web
   npm install -g lirc_web@0.3.1
 
-CMD /etc/init.d/lirc start && lirc_web
+CMD lirc_web
