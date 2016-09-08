@@ -1,7 +1,0 @@
---detach
---restart=always
---privileged
---net=host
---publish 51826:51826
---volume ~/dockerfiles/homebridge/config:/root/.homebridge
---volume /var/run/dbus:/var/run/dbus

@@ -1,6 +1,0 @@
---detach
---restart=always
---privileged
---net=host
---publish 3000:3000
---volume /var/run/dbus:/var/run/dbus

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAINTAINER=flochtililoch
+MAINTAINER=$(cat MAINTAINER)
 CONTAINER=$(basename $@)
 PLATFORM=$(uname -m)
 IMAGE="$MAINTAINER/$PLATFORM-$CONTAINER"
