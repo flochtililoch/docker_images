@@ -16,6 +16,8 @@ Repository hosting docker images representations (Dockerfile) and apps configura
  │  │   │    ├── config
  │  │   │    └── ...
  │  │   └── docker-compose.yml
+ │  │
+ │  ├─ run.sh
  │  └── ...
  │
  └─ images
@@ -39,6 +41,15 @@ Name of the container representing the service as defined in [`docker-compose.ym
 #### `docker-compose.yml`
 
 See [docker-compose.yml](https://docs.docker.com/compose/compose-file/).
+
+#### `run.sh`
+
+Script to run the app represented by its [`docker-compose.yml`](#docker-composeyml).
+
+*Usage:*
+```bash
+./run.sh <app_name>
+```
 
 #### `<image_base_name>`
 
