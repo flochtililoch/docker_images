@@ -2,7 +2,7 @@ version: "2"
 services:
   misfit-bolt-http:
     container_name: misfit-bolt-http
-    image: flochtililoch/armv7l-misfit-bolt-http
+    image: "${MAINTAINER}/${PLATFORM}-misfit-bolt-http"
     restart: always
     command: misfit-bolt-http -p 3001
     # environment:
@@ -15,7 +15,7 @@ services:
     - /var/run/dbus:/var/run/dbus
   homebridge:
     container_name: homebridge
-    image: flochtililoch/armv7l-homebridge
+    image: "${MAINTAINER}/${PLATFORM}-homebridge"
     restart: always
     command: homebridge
     # environment:
@@ -31,7 +31,7 @@ services:
       - misfit-bolt-http
   lirc:
     container_name: lirc
-    image: flochtililoch/armv7l-lirc
+    image: "${MAINTAINER}/${PLATFORM}-lirc"
     restart: always
     command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0
     privileged: true
@@ -44,7 +44,7 @@ services:
     - /dev/mem:/dev/mem
   lirc-web:
     container_name: lirc-web
-    image: flochtililoch/armv7l-lirc-web
+    image: "${MAINTAINER}/${PLATFORM}-lirc-web"
     restart: always
     command: lirc_web
     ports:
