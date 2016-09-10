@@ -26,31 +26,6 @@ services:
     - "51826:51826"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge/config:/root/.homebridge
+    - ./config:/root/.homebridge
     depends_on:
       - misfit-bolt-http
-  lirc:
-    container_name: lirc
-    image: "${MAINTAINER}/${PLATFORM}-lirc"
-    restart: always
-    command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0
-    privileged: true
-    network_mode: host
-    volumes:
-    - /lib/modules:/lib/modules
-    - ./lirc/config:/etc/lirc
-    - /var/run/lirc:/var/run/lirc
-    devices:
-    - /dev/mem:/dev/mem
-  lirc-web:
-    container_name: lirc-web
-    image: "${MAINTAINER}/${PLATFORM}-lirc-web"
-    restart: always
-    command: lirc_web
-    ports:
-    - "3000:3000"
-    volumes:
-    - ./lirc-web/config:/root
-    - /var/run/lirc:/var/run/lirc
-    depends_on:
-      - lirc
