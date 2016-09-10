@@ -1,0 +1,14 @@
+version: "2"
+services:
+  vpn:
+    container_name: ipsec-vpn-server
+    image: "${MAINTAINER}/${PLATFORM}-ipsec-vpn-server"
+    restart: always
+    privileged: true
+    ports:
+    - "500:500/udp"
+    - "4500:4500/udp"
+    env_file:
+    - vpn.env
+    volumes:
+    - /lib/modules:/lib/modules:ro
