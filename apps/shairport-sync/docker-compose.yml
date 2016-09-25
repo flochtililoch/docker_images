@@ -1,0 +1,16 @@
+version: "2"
+services:
+  lirc:
+    container_name: shairport-sync
+    image: "${MAINTAINER}/${PLATFORM}-shairport-sync"
+    restart: always
+    command: shairport-sync -c /root/shairport-sync/shairport-sync.conf
+    network_mode: host
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - /dev/shm:/dev/shm
+    - ./config:/root/shairport-sync
+    devices:
+    - /dev/snd:/dev/snd
+#    group_add: # should be supported from docker-compose 1.9 onwards  https://github.com/docker/compose/pull/3709
+#    - audio
