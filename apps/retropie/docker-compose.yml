@@ -1,0 +1,13 @@
+version: "2"
+services:
+  lirc:
+    container_name: retropie
+    image: "${MAINTAINER}/${PLATFORM}-retropie"
+    restart: always
+    command: bash
+    network_mode: host
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - /dev/shm:/dev/shm
+    devices:
+    - /dev/snd:/dev/snd
