@@ -1,6 +1,6 @@
 # Dockers
 
-Repository hosting docker images representations (Dockerfile) and apps configurations.
+Repository hosting docker images representations (Dockerfile) and apps configurations. Most images are meant to be built on Raspberry PI platforms.
 
 
 ## Images definitions
@@ -84,7 +84,8 @@ Text file containing the name of the maintainer. Used when generating images nam
 - `lirc-web`: [LIRC Web](https://github.com/alexbain/lirc_web)
 - `misfit-bolt-http`: [Misfit Bolt HTTP](https://github.com/flochtililoch/misfit-bolt-http)
 - `node`: [NodeJS](https://nodejs.org/en/)
-
+- `shairport-sync`: [Shairport Sync for C.H.I.P.](https://github.com/mikebrady/shairport-sync)
+- `ipsec-vpn-server`: [IPSec VPN on Raspberry Pi](https://github.com/hwdsl2/docker-ipsec-vpn-server)
 
 ## Built Images
 
@@ -95,3 +96,5 @@ These are direct links to pre-built images from their Dockerfile representation.
 - `lirc-web`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-lirc-web/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-lirc-web/)
 - `misfit-bolt-http`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-misfit-bolt-http/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-misfit-bolt-http/)
 - `node`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-node/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-node/)
+- `shairport-sync`: [Shairport Sync for C.H.I.P.](https://hub.docker.com/r/flochtililoch/armv7l-ipsec-vpn-server/)
+- `ipsec-vpn-server`: [IPSec VPN on Raspberry Pi](https://hub.docker.com/r/flochtililoch/armv7l-shairport-sync/)
