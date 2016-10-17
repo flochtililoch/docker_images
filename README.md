@@ -96,5 +96,5 @@ These are direct links to pre-built images from their Dockerfile representation.
 - `lirc-web`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-lirc-web/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-lirc-web/)
 - `misfit-bolt-http`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-misfit-bolt-http/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-misfit-bolt-http/)
 - `node`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-node/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-node/)
-- `shairport-sync`: [Shairport Sync for C.H.I.P.](https://hub.docker.com/r/flochtililoch/armv7l-ipsec-vpn-server/)
-- `ipsec-vpn-server`: [IPSec VPN on Raspberry Pi](https://hub.docker.com/r/flochtililoch/armv7l-shairport-sync/)
+- `shairport-sync`: [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-ipsec-vpn-server/)
+- `ipsec-vpn-server`: [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-shairport-sync/)
