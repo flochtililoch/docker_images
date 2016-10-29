@@ -1,3 +1,4 @@
 .DS_Store
 config/homebridge/accessories/
 config/homebridge/persist/
+npm-debug.log

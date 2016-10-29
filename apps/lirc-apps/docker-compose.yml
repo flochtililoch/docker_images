@@ -13,6 +13,18 @@ services:
     - /var/run/lirc:/var/run/lirc
     devices:
     - /dev/mem:/dev/mem
+  lirc-state-api:
+    container_name: lirc-state-api
+    image: "${MAINTAINER}/${PLATFORM}-lirc-state-api"
+    restart: always
+    command: lirc-state-api -c=/root/config.json -p=3001
+    ports:
+    - "3001:3001"
+    volumes:
+    - ./lirc-state-api:/root
+    - /var/run/lirc:/var/run/lirc
+    depends_on:
+      - lirc
   lirc-web:
     container_name: lirc-web
     image: "${MAINTAINER}/${PLATFORM}-lirc-web"

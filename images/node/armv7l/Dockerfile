@@ -2,7 +2,7 @@ FROM resin/armv7hf-debian
 MAINTAINER flochtililoch
 
 # Node
-ENV NODE_VERSION 5.5.0
+ENV NODE_VERSION 6.8.1
 ENV PROC_VERSION armv7l
 ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz /
 RUN \
