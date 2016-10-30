@@ -1,4 +1,4 @@
-FROM flochtililoch/armv7l-node:5.5.0
+FROM flochtililoch/armv7l-node:6.8.1
 MAINTAINER flochtililoch
 
 RUN \
@@ -12,10 +12,13 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.3.4 -g --unsafe-perm
+  npm install homebridge@0.4.6 -g --unsafe-perm
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.1.4 -g
+  npm install homebridge-misfit-bolt@0.1.4 -g && \
+
+  # Install Homebridge LIRC Accessory plugin
+  npm install homebridge-lirc-accessory@0.0.1 -g
 
 CMD DEBUG=* homebridge
