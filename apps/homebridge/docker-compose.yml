@@ -4,13 +4,13 @@ services:
     container_name: misfit-bolt-http
     image: "${MAINTAINER}/${PLATFORM}-misfit-bolt-http"
     restart: always
-    command: misfit-bolt-http -p 3001
+    command: misfit-bolt-http -p 3010
     # environment:
     #   DEBUG: "*misfit*"
     privileged: true
     network_mode: host
     ports:
-    - "3001:3001"
+    - "3010:3010"
     volumes:
     - /var/run/dbus:/var/run/dbus
   homebridge:

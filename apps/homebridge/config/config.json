@@ -1,22 +1,79 @@
 {
-    "bridge": {
-        "name": "Home",
-        "username": "AA:BB:CC:DD:EE:FF",
-        "port": 51826,
-        "pin": "415-25-981"
-    },
-
-    "description": "Homebridge",
-
-    "platforms": [
+  "bridge": {
+    "name": "Home",
+    "username": "AA:BB:CC:DD:EE:FF",
+    "port": 51826,
+    "pin": "415-25-981"
+  },
+  "description": "Homebridge",
+  "platforms": [
+    {
+      "platform": "MisfitBolt",
+      "name": "MisfitBolt",
+      "accessories": [{
+        "id": "20c38f8afa69",
+        "name": "Bolt",
+        "baseUrl": "http://localhost:3010/20c38f8afa69"
+      }]
+    }
+  ],
+  "accessories": [
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Fan",
+      "name": "Fan",
+      "manufacturer": "dyson",
+      "model": "cool",
+      "serialNumber": "123-32125",
+      "baseUrl": "http://localhost:3001/devices/fan",
+      "properties": [
         {
-            "platform": "MisfitBolt",
-            "name": "MisfitBolt",
-            "accessories": [{
-              "id": "20c38f8afa69",
-              "name": "Bolt",
-              "baseUrl": "http://localhost:3001/20c38f8afa69"
-            }]
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        },
+        {
+          "characteristic": "RotationSpeed",
+          "lircState": "air",
+          "type": "Integer",
+          "ratio": 10
+        },
+        {
+          "characteristic": "RotationDirection",
+          "lircState": "rotate",
+          "type": "Boolean"
         }
-    ]
+      ]
+    },
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Switch",
+      "name": "TV",
+      "manufacturer": "Samsumg",
+      "model": "UN40EH6000FXZA",
+      "baseUrl": "http://localhost:3001/devices/tv",
+      "properties": [
+        {
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Switch",
+      "name": "Speakers",
+      "manufacturer": "Bose",
+      "model": "CineMate GS Series II",
+      "baseUrl": "http://localhost:3001/devices/speakers",
+      "properties": [
+        {
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        }
+      ]
+    }
+  ]
 }
