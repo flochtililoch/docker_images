@@ -15,6 +15,21 @@
         "name": "Bolt",
         "baseUrl": "http://localhost:3010/20c38f8afa69"
       }]
+    },
+    {
+      "platform": "Wink Pivot Power Genius",
+      "name": "Wink Pivot Power Genius",
+      "client_id": "changeme",
+      "client_secret": "changeme",
+      "username": "changeme",
+      "password": "changeme",
+      "outlets": [
+        {
+          "uuid":"4fba6ed4-b0fc-49c2-ba13-205556fda97b_0",
+          "hapService": "Lightbulb",
+          "name": "Light"
+        }
+      ]
     }
   ],
   "accessories": [

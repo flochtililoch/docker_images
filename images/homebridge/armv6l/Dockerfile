@@ -19,6 +19,9 @@ RUN \
   npm install homebridge-misfit-bolt@0.1.4 -g && \
 
   # Install Homebridge LIRC Accessory plugin
-  npm install homebridge-lirc-accessory@0.0.1 -g
+  npm install homebridge-lirc-accessory@0.0.1 -g && \
 
-CMD DEBUG=* homebridge
+  # Install Homebridge Pivot Power Genius plugin
+  npm install homebridge-pivot-power-genius@0.0.1 -g
+
+CMD homebridge
