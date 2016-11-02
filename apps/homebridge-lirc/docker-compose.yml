@@ -1,0 +1,21 @@
+version: "2"
+services:
+  lirc-state-api:
+    container_name: homebridge-lirc-lirc-state-api
+    image: "${MAINTAINER}/${PLATFORM}-lirc-state-api"
+    restart: always
+    command: lirc-state-api -c=/root/config.json -p=3001
+    ports:
+    - "3001:3001"
+    volumes:
+    - ./lirc-state-api:/root
+    - /var/run/lirc:/var/run/lirc
+  homebridge:
+    extends:
+      file: ../common/services.yml
+      service: homebridge
+    container_name: homebridge-lirc
+    volumes:
+    - ./homebridge:/root/.homebridge
+    depends_on:
+    - lirc-state-api

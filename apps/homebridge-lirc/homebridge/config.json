@@ -1,37 +1,11 @@
 {
   "bridge": {
-    "name": "Home",
-    "username": "AA:BB:CC:DD:EE:FF",
+    "name": "homebridge-lirc",
+    "username": "AB:CD:EF:FE:DC:BA",
     "port": 51826,
-    "pin": "415-25-981"
+    "pin": "123-45-678"
   },
-  "description": "Homebridge",
-  "platforms": [
-    {
-      "platform": "MisfitBolt",
-      "name": "MisfitBolt",
-      "accessories": [{
-        "id": "20c38f8afa69",
-        "name": "Bolt",
-        "baseUrl": "http://localhost:3010/20c38f8afa69"
-      }]
-    },
-    {
-      "platform": "Wink Pivot Power Genius",
-      "name": "Wink Pivot Power Genius",
-      "client_id": "changeme",
-      "client_secret": "changeme",
-      "username": "changeme",
-      "password": "changeme",
-      "outlets": [
-        {
-          "uuid":"4fba6ed4-b0fc-49c2-ba13-205556fda97b_0",
-          "hapService": "Lightbulb",
-          "name": "Light"
-        }
-      ]
-    }
-  ],
+  "description": "Homebridge for LIRC",
   "accessories": [
     {
       "accessory": "homebridge-lirc-accessory.LIRC Accessory",

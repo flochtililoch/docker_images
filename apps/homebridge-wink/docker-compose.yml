@@ -1,0 +1,9 @@
+version: "2"
+services:
+  homebridge:
+    extends:
+      file: ../common/services.yml
+      service: homebridge
+    container_name: homebridge-wink
+    volumes:
+    - ./homebridge:/root/.homebridge
