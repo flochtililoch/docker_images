@@ -1,0 +1,13 @@
+version: "2"
+services:
+  homebridge:
+    container_name: homebridge
+    image: "${MAINTAINER}/${PLATFORM}-homebridge"
+    restart: always
+    command: homebridge
+    privileged: true
+    network_mode: host
+    ports:
+    - "51826:51826"
+    volumes:
+    - /var/run/dbus:/var/run/dbus

@@ -1,0 +1,23 @@
+version: "2"
+services:
+  misfit-bolt-http:
+    container_name: misfit-bolt-http
+    image: "${MAINTAINER}/${PLATFORM}-misfit-bolt-http"
+    restart: always
+    command: misfit-bolt-http -p 3000
+    environment:
+      DEBUG: "*misfit*"
+    privileged: true
+    network_mode: host
+    ports:
+    - "3000:3000"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+  homebridge:
+    extends:
+      file: ../common/services.yml
+      service: homebridge
+    volumes:
+    - ./homebridge:/root/.homebridge
+    depends_on:
+    - misfit-bolt-http

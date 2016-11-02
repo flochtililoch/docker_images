@@ -1,31 +1,21 @@
 version: "2"
 services:
-  misfit-bolt-http:
-    container_name: misfit-bolt-http
-    image: "${MAINTAINER}/${PLATFORM}-misfit-bolt-http"
+  lirc-state-api:
+    container_name: lirc-state-api
+    image: "${MAINTAINER}/${PLATFORM}-lirc-state-api"
     restart: always
-    command: misfit-bolt-http -p 3010
-    # environment:
-    #   DEBUG: "*misfit*"
-    privileged: true
-    network_mode: host
+    command: lirc-state-api -c=/root/config.json -p=3001
     ports:
-    - "3010:3010"
+    - "3001:3001"
     volumes:
-    - /var/run/dbus:/var/run/dbus
+    - ./lirc-state-api:/root
+    - /var/run/lirc:/var/run/lirc
   homebridge:
-    container_name: homebridge
-    image: "${MAINTAINER}/${PLATFORM}-homebridge"
-    restart: always
-    command: homebridge
-    # environment:
-    #   DEBUG: "*"
-    privileged: true
-    network_mode: host
-    ports:
-    - "51826:51826"
+    extends:
+      file: ../common/services.yml
+      service: homebridge
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-patched" # temporary patch for wink plugin
     volumes:
-    - /var/run/dbus:/var/run/dbus
-    - ./config:/root/.homebridge
+    - ./homebridge:/root/.homebridge
     depends_on:
-      - misfit-bolt-http
+    - lirc-state-api

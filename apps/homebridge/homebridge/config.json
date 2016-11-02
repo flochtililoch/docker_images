@@ -1,21 +1,12 @@
 {
   "bridge": {
-    "name": "Home",
-    "username": "AA:BB:CC:DD:EE:FF",
+    "name": "homebridge",
+    "username": "AB:CD:EF:FE:DC:BA",
     "port": 51826,
-    "pin": "415-25-981"
+    "pin": "123-45-678"
   },
   "description": "Homebridge",
   "platforms": [
-    {
-      "platform": "MisfitBolt",
-      "name": "MisfitBolt",
-      "accessories": [{
-        "id": "20c38f8afa69",
-        "name": "Bolt",
-        "baseUrl": "http://localhost:3010/20c38f8afa69"
-      }]
-    },
     {
       "platform": "Wink Pivot Power Genius",
       "name": "Wink Pivot Power Genius",
