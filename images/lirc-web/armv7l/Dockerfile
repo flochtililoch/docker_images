@@ -1,5 +1,6 @@
 FROM flochtililoch/armv7l-node:5.5.0
 MAINTAINER flochtililoch
+ENV REFRESHED_ON 2017-01-04
 
 RUN \
   # Update system

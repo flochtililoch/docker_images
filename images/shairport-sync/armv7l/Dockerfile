@@ -1,5 +1,6 @@
 FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
+ENV REFRESHED_ON 2017-01-04
 
 RUN [ "cross-build-start" ]
 

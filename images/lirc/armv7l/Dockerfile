@@ -1,5 +1,6 @@
 FROM resin/armv7hf-debian
 MAINTAINER flochtililoch
+ENV REFRESHED_ON 2017-01-04
 
 RUN \
   # Update system
