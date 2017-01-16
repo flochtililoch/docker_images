@@ -1,0 +1,29 @@
+version: "2"
+services:
+  node-red:
+    container_name: node-red
+    image: "${MAINTAINER}/${PLATFORM}-node-red"
+    restart: always
+    environment:
+      DEBUG: "*"
+    privileged: true
+    network_mode: host
+    ports:
+    - "1880:1880"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./node-red-data:/root/.node-red
+    depends_on:
+    - mosquitto
+  mosquitto:
+    container_name: mosquitto
+    image: "${MAINTAINER}/${PLATFORM}-mosquitto"
+    restart: always
+    network_mode: host
+    ports:
+    - "1883:1883"
+    - "9001:9001"
+    volumes:
+    - ./mosquitto/config:/mqtt/config
+    - ./mosquitto/data:/mqtt/data
+

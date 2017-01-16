@@ -1,6 +1,6 @@
-FROM resin/armv7hf-debian
+FROM resin/armv7hf-debian:jessie-20170107
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-01-04
+ENV REFRESHED_ON 2017-01-08
 
 # Node
 ENV NODE_VERSION 6.9.3
@@ -9,4 +9,4 @@ ADD https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${PROC_
 RUN \
   cd /usr/local/ && \
   tar --strip-components 1 -xzf /node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz && \
-  rm -f node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz
+  rm -f /node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz
