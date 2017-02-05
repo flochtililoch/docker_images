@@ -4,17 +4,15 @@ services:
     container_name: node-red
     image: "${MAINTAINER}/${PLATFORM}-node-red"
     restart: always
-    environment:
-      DEBUG: "*"
     privileged: true
     network_mode: host
     ports:
     - "1880:1880"
     volumes:
-    - /var/run/dbus:/var/run/dbus
     - ./node-red-data:/root/.node-red
     depends_on:
     - mosquitto
+    - bluetooth-mqtt-proxy
   mosquitto:
     container_name: mosquitto
     image: "${MAINTAINER}/${PLATFORM}-mosquitto"
@@ -26,4 +24,15 @@ services:
     volumes:
     - ./mosquitto/config:/mqtt/config
     - ./mosquitto/data:/mqtt/data
-
+  bluetooth-mqtt-proxy:
+    container_name: bluetooth-mqtt-proxy
+    image: "${MAINTAINER}/${PLATFORM}-bluetooth-mqtt-proxy"
+    restart: always
+    command: bash
+    environment:
+      DEBUG: "bluetooth-mqtt-proxy*"
+    privileged: true
+    network_mode: host
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./bluetooth-mqtt-proxy:/root/.bluetooth-mqtt-proxy
