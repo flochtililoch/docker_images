@@ -28,7 +28,6 @@ services:
     container_name: bluetooth-mqtt-proxy
     image: "${MAINTAINER}/${PLATFORM}-bluetooth-mqtt-proxy"
     restart: always
-    command: bash
     environment:
       DEBUG: "bluetooth-mqtt-proxy*"
     privileged: true
