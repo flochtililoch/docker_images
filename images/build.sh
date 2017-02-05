@@ -1,14 +1,14 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Usage ./`basename $0` image-name"
-  echo "  i.e. ./`basename $0` node"
+  echo "Usage ./`basename $0` image-name [platform]"
+  echo "  i.e. ./`basename $0` node armv7l"
   exit 1
 fi
 
 MAINTAINER=$(cat ../MAINTAINER)
 NAME=$(basename $1)
-PLATFORM=$(uname -m)
+PLATFORM=${2:-$(uname -m)}
 IMAGE="$MAINTAINER/$PLATFORM-$NAME"
 DOCKERFILE="$NAME/$PLATFORM"
 
