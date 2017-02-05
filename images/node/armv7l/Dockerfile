@@ -1,6 +1,8 @@
-FROM resin/armv7hf-debian:jessie-20170107
+FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-01-08
+ENV REFRESHED_ON 2017-01-05
+
+RUN [ "cross-build-start" ]
 
 # Node
 ENV NODE_VERSION 6.9.3
@@ -10,3 +12,5 @@ RUN \
   cd /usr/local/ && \
   tar --strip-components 1 -xzf /node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz && \
   rm -f /node-v${NODE_VERSION}-linux-${PROC_VERSION}.tar.gz
+
+RUN [ "cross-build-end" ]
