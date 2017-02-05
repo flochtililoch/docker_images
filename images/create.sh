@@ -18,11 +18,10 @@ PLATFORMS=(
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 REFRESHED_ON=$(date +%Y-%m-%d)
 
-echo "Creating new image $NAME for platform $PLATFORM"
-
 for PLATFORM in ${PLATFORMS[@]}; do
   DIR="$ROOT/images/$NAME/$PLATFORM"
   mkdir -p $DIR
+  echo "Creating new image $NAME for platform $PLATFORM"
   echo "FROM <changeme>" > $DIR/Dockerfile
   echo "MAINTAINER $MAINTAINER" >> $DIR/Dockerfile
   echo "ENV REFRESHED_ON $REFRESHED_ON" >> $DIR/Dockerfile
