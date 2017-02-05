@@ -1,10 +1,16 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+  echo "Usage ./`basename $0` image-name"
+  echo "  i.e. ./`basename $0` node"
+  exit 1
+fi
+
 MAINTAINER=$(cat ../MAINTAINER)
-CONTAINER=$(basename $@)
+NAME=$(basename $1)
 PLATFORM=$(uname -m)
-IMAGE="$MAINTAINER/$PLATFORM-$CONTAINER"
-DOCKERFILE="$CONTAINER/$PLATFORM"
+IMAGE="$MAINTAINER/$PLATFORM-$NAME"
+DOCKERFILE="$NAME/$PLATFORM"
 
 echo "Building image $IMAGE from $DOCKERFILE"
 docker build -t $IMAGE $DOCKERFILE

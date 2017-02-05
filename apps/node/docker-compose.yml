@@ -1,0 +1,12 @@
+version: "2"
+services:
+  nodejs:
+    container_name: node
+    image: "${MAINTAINER}/${PLATFORM}-node"
+    command: /bin/bash
+    privileged: true
+    network_mode: host
+    stdin_open: true
+    tty: true
+    devices:
+    - /dev/mem:/dev/mem
