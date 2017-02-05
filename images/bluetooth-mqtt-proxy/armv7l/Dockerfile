@@ -1,4 +1,4 @@
-FROM flochtililoch/armv7l-node:test
+FROM flochtililoch/armv7l-node-ble
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2017-02-05
 
