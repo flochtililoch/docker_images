@@ -14,7 +14,7 @@ services:
     extends:
       file: ../common/services.yml
       service: homebridge
-    image: "${MAINTAINER}/${PLATFORM}-homebridge-patched" # temporary patch for wink plugin
+    image: "${MAINTAINER}/${PLATFORM}-homebridge"
     volumes:
     - ./homebridge:/root/.homebridge
     depends_on:

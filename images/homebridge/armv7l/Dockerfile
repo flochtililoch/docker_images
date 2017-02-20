@@ -1,6 +1,8 @@
-FROM flochtililoch/armv7l-node:6.8.1
+FROM flochtililoch/armv7l-node:6.9.3
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2017-01-04
+
+RUN [ "cross-build-start" ]
 
 RUN \
   # Update system
@@ -13,7 +15,7 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.4.6 -g --unsafe-perm
+  npm install homebridge@0.4.16 -g --unsafe-perm
 
 RUN \
   # Install Homebridge Misfit Bolt plugin
@@ -23,6 +25,8 @@ RUN \
   npm install homebridge-lirc-accessory@0.0.1 -g && \
 
   # Install Homebridge Pivot Power Genius plugin
-  npm install homebridge-pivot-power-genius@0.0.1 -g
+  npm install homebridge-pivot-power-genius@0.0.2 -g
+
+RUN [ "cross-build-end" ]
 
 CMD homebridge
