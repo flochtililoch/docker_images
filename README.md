@@ -48,7 +48,7 @@ Script to run the app represented by its [`docker-compose.yml`](#docker-composey
 
 *Usage:*
 ```bash
-./run.sh <app_name>
+./run.sh <app_name> [run <container_name>]
 ```
 
 #### `<image_base_name>`
