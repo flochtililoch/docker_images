@@ -1,0 +1,11 @@
+version: "2"
+services:
+  vpn:
+    container_name: openvpn-client
+    image: "${MAINTAINER}/${PLATFORM}-openvpn-client"
+    restart: always
+    command: openvpn --config /var/openvpn/openvpn.ovpn --auth-nocache
+    privileged: true
+    network_mode: host
+    volumes:
+    - ./openvpn-client:/var/openvpn
