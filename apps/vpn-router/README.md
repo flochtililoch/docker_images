@@ -1,9 +1,8 @@
 # VPN Router
 
-Connects to a remote VPN, and route traffic through
+Connect your Apple TV to your Raspberry PI via ethernet, and have its traffic routed through a VPN.
 
-## Setup
-
+## Setup (Raspberry PI)
 - Copy VPN configuration to `openvpn-client/openvpn.ovpn`
 - Configure static IP for eth0:
   ```sh
