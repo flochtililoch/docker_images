@@ -9,3 +9,13 @@ services:
     network_mode: host
     volumes:
     - ./openvpn-client:/var/openvpn
+  dhcp:
+    container_name: isc-dhcp-server
+    image: "${MAINTAINER}/${PLATFORM}-isc-dhcp-server"
+    restart: always
+    command: eth0
+    network_mode: host
+    volumes:
+    - ./isc-dhcp-server/dhcpd.conf:/etc/dhcp/dhcpd.conf
+    - ./isc-dhcp-server:/var/lib/dhcp
+
