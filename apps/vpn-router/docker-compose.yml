@@ -4,11 +4,23 @@ services:
     container_name: openvpn-client
     image: "${MAINTAINER}/${PLATFORM}-openvpn-client"
     restart: always
-    command: openvpn --config /var/openvpn/openvpn.ovpn --auth-nocache
+    command: openvpn --config /var/openvpn/openvpn.ovpn --auth-nocache --mute-replay-warnings
     privileged: true
     network_mode: host
     volumes:
     - ./openvpn-client:/var/openvpn
+  prepare-dhcp:
+    container_name: prepare-dhcp
+    image: "${MAINTAINER}/${PLATFORM}-networking"
+    command: /prepare-dhcp/run.sh
+    privileged: true
+    network_mode: host
+    volumes:
+    - /etc/sysctl.conf:/etc/sysctl.conf
+    - ./prepare-dhcp:/prepare-dhcp
+    - ./isc-dhcp-server:/isc-dhcp-server
+    depends_on:
+    - vpn
   dhcp:
     container_name: isc-dhcp-server
     image: "${MAINTAINER}/${PLATFORM}-isc-dhcp-server"
@@ -18,4 +30,5 @@ services:
     volumes:
     - ./isc-dhcp-server/dhcpd.conf:/etc/dhcp/dhcpd.conf
     - ./isc-dhcp-server:/var/lib/dhcp
-
+    depends_on:
+    - prepare-dhcp
