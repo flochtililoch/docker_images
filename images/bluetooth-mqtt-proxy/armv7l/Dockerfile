@@ -1,6 +1,6 @@
 FROM flochtililoch/armv7l-node-ble
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-02-05
+ENV REFRESHED_ON 2017-06-04
 
 RUN [ "cross-build-start" ]
 
