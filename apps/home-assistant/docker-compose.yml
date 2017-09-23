@@ -1,0 +1,11 @@
+version: "2"
+services:
+  home-assistant:
+    container_name: home-assistant
+    image: "${MAINTAINER}/${PLATFORM}-home-assistant"
+    restart: always
+    command: hass
+    ports:
+    - "8123:8123"
+    volumes:
+    - ./home-assistant:/config
