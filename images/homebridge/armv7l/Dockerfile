@@ -1,8 +1,6 @@
 FROM flochtililoch/armv7l-node:6.9.3
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-01-04
-
-RUN [ "cross-build-start" ]
+ENV REFRESHED_ON 2017-09-24
 
 RUN \
   # Update system
@@ -11,7 +9,12 @@ RUN \
 
 RUN \
   # Install Homebridge dependencies
-  apt-get install -y git python build-essential libavahi-compat-libdnssd-dev
+  apt-get install -y git python build-essential libavahi-compat-libdnssd-dev wget
+
+RUN \
+  # Install ffmpeg
+  wget goo.gl/gMGA81 -O ffmpeg.deb && \
+  dpkg -i ffmpeg.deb
 
 RUN \
   # Install Homebridge
@@ -25,8 +28,9 @@ RUN \
   npm install homebridge-lirc-accessory@0.0.1 -g && \
 
   # Install Homebridge Pivot Power Genius plugin
-  npm install homebridge-pivot-power-genius@0.0.2 -g
+  npm install homebridge-pivot-power-genius@0.0.2 -g \
 
-RUN [ "cross-build-end" ]
+  # Install Homebridge Camera ffmpeg plugin (OMX mod)
+  npm install homebridge-camera-ffmpeg-omx@0.0.3 -g
 
 CMD homebridge
