@@ -4,7 +4,7 @@ services:
 language: bash
 script:
 - >
-  if [ "$TRAVIS_BRANCH" == "travis" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     # prepare environment
     docker run --rm --privileged multiarch/qemu-user-static:register --reset
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
@@ -19,7 +19,7 @@ script:
       IMAGE_PATH=($(echo $IMAGE | tr "/" "\n"))
       IMAGE_NAME=${IMAGE_PATH[1]}
       PLATFORM=${IMAGE_PATH[2]}
-      TAG=$(grep "ENV IMAGE_VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
+      TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
       if [ -z $TAG ]; then
         TAG="latest"
       fi

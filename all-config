@@ -1,0 +1,178 @@
+{
+  "bridge": {
+    "name": "homebridge-wink",
+    "username": "AB:CD:EF:FF:DC:BA",
+    "port": 51829,
+    "pin": "123-45-678"
+  },
+  "description": "HomeKit bridge to Wink Pivot Power Genius platform",
+  "platforms": [
+    {
+      "platform": "Wink Pivot Power Genius",
+      "name": "Wink Pivot Power Genius",
+            "client_id": "003d2669b69a57b0d1e680d6af8fb22d",
+      "client_secret": "643b97b2afd462f7ae9db9c45de53760",
+      "username": "flochtililoch@gmail.com",
+      "password": "&I$Hz`DYBp])OXoEnv70a89Bt8$JZGV./6s7W`FGcqT%0W4U1d",
+
+      "outlets": [
+        {
+          "uuid":"4fba6ed4-b0fc-49c2-ba13-205556fda97b_0",
+          "hapService": "Lightbulb",
+          "name": "Light"
+        }
+      ]
+    }
+  ]
+}
+{
+  "bridge": {
+    "name": "homebridge-misfit-bolt",
+    "username": "AB:CD:EF:FE:DC:BA",
+    "port": 51828,
+    "pin": "123-45-678"
+  },
+  "description": "HomeKit bridge to Misfit Bolt platform",
+  "platforms": [
+    {
+      "platform": "MisfitBolt",
+      "name": "MisfitBolt",
+      "accessories": [{
+        "id": "20c38f8afa69",
+        "name": "Bolt",
+        "baseUrl": "http://localhost:3000/20c38f8afa69"
+      }]
+    }
+  ]
+}
+
+{
+  "bridge": {
+    "name": "homebridge-lirc",
+    "username": "AB:CD:EF:FE:DC:BA",
+    "port": 51827,
+    "pin": "123-45-678"
+  },
+  "description": "HomeKit bridge to LIRC accessories",
+  "platforms": [],
+  "accessories": [
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Fan",
+      "name": "Fan",
+      "manufacturer": "dyson",
+      "model": "cool",
+      "serialNumber": "123-32125",
+      "baseUrl": "http://localhost:3001/devices/fan",
+      "properties": [
+        {
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        },
+        {
+          "characteristic": "RotationSpeed",
+          "lircState": "air",
+          "type": "Integer",
+          "ratio": 10
+        },
+        {
+          "characteristic": "RotationDirection",
+          "lircState": "rotate",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Switch",
+      "name": "TV",
+      "manufacturer": "Samsumg",
+      "model": "UN40EH6000FXZA",
+      "baseUrl": "http://localhost:3001/devices/tv",
+      "properties": [
+        {
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "accessory": "homebridge-lirc-accessory.LIRC Accessory",
+      "hapService": "Switch",
+      "name": "Speakers",
+      "manufacturer": "Bose",
+      "model": "CineMate GS Series II",
+      "baseUrl": "http://localhost:3001/devices/speakers",
+      "properties": [
+        {
+          "characteristic": "On",
+          "lircState": "power",
+          "type": "Boolean"
+        }
+      ]
+    }
+  ]
+}
+{
+  "bridge": {
+    "name": "homebridge-cameras",
+    "username": "AB:CD:EF:FE:DC:BA",
+    "port": 51826,
+    "pin": "123-45-678"
+  },
+  "description": "Homebridge cameras",
+  "platforms": [
+    {
+      "platform": "Camera-ffmpeg-omx",
+      "cameras": [
+        {
+          "name": "iPhone 4",
+          "videoConfig": {
+            "source": "-re -i http://10.0.1.100/live?camera=admin",
+            "stillImageSource": "-i http://10.0.1.100/live?camera=admin",
+            "maxStreams": 2,
+            "maxWidth": 1280,
+            "maxHeight": 720,
+            "maxFPS": 30
+          }
+        },
+        {
+          "name": "iPhone 5s white",
+          "videoConfig": {
+            "source": "-re -i http://10.0.1.101/live?camera=admin",
+            "stillImageSource": "-i http://10.0.1.101/live?camera=admin",
+            "maxStreams": 2,
+            "maxWidth": 1280,
+            "maxHeight": 720,
+            "maxFPS": 30
+          }
+        },
+        {
+          "name": "iPhone 5s black",
+          "videoConfig": {
+            "source": "-re -i http://10.0.1.102/live?camera=admin",
+            "stillImageSource": "-i http://10.0.1.102/live?camera=admin",
+            "maxStreams": 2,
+            "maxWidth": 1280,
+            "maxHeight": 720,
+            "maxFPS": 30
+          }
+        },
+        {
+          "name": "iMac",
+          "videoConfig": {
+            "source": "-re -i http://10.0.1.16:8081",
+            "stillImageSource": "-i http://10.0.1.16:8081",
+            "maxStreams": 2,
+            "maxWidth": 1280,
+            "maxHeight": 720,
+            "maxFPS": 30
+          }
+        }
+      ]
+    }
+  ],
+  "accessories": []
+}
