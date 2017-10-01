@@ -10,6 +10,9 @@ ADD https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-${ARCH}.tar.gz /
 RUN \
   cd /usr/local/ && \
   tar --strip-components 1 -xzf /node-v${VERSION}-linux-${ARCH}.tar.gz && \
-  rm -f /node-v${VERSION}-linux-${ARCH}.tar.gz
+  rm -f /node-v${VERSION}-linux-${ARCH}.tar.gz && \
+  
+  # https://github.com/npm/uid-number/issues/3
+  npm config set unsafe-perm true 
 
 RUN [ "cross-build-end" ]
