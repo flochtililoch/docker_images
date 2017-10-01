@@ -12,20 +12,25 @@ script:
     # get changed images
     IMAGES=($(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/))
 
-    # build/tag/push images
+    # for each image
     cd images
     for IMAGE in "${IMAGES[@]}"
     do
       IMAGE_PATH=($(echo $IMAGE | tr "/" "\n"))
       IMAGE_NAME=${IMAGE_PATH[1]}
       PLATFORM=${IMAGE_PATH[2]}
-      TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
-      if [ -z $TAG ]; then
-        TAG="latest"
-      fi
-      
+
+      # built it
       ./build.sh $IMAGE_NAME $PLATFORM
-      ./tag.sh $IMAGE_NAME $TAG $PLATFORM
+
+      # tag it
+      TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
+      if [ ! -z $TAG ]; then
+        ./tag.sh $IMAGE_NAME $TAG $PLATFORM
+      fi
+      ./tag.sh $IMAGE_NAME latest $PLATFORM
+      
+      # push it
       ./push.sh $IMAGE_NAME $TAG $PLATFORM
     done
   fi
