@@ -1,0 +1,16 @@
+version: "2"
+services:
+  homebridge-cameras:
+    container_name: homebridge-cameras
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-cameras"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "51826:51826"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge-cameras:/root/.homebridge
+    - /dev/vchiq:/dev/vchiq
+    devices:
+    - /dev/vchiq:/dev/vchiq

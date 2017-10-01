@@ -13,11 +13,16 @@ services:
     - "3000:3000"
     volumes:
     - /var/run/dbus:/var/run/dbus
-  homebridge:
-    extends:
-      file: ../common/services.yml
-      service: homebridge
+  homebridge-misfit-bolt:
+    container_name: homebridge-misfit-bolt
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-misfit-bolt"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "51828:51828"
     volumes:
-    - ./homebridge:/root/.homebridge
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge-misfit-bolt:/root/.homebridge
     depends_on:
     - misfit-bolt-http
