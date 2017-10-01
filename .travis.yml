@@ -1,0 +1,35 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+- >
+  if [ "$TRAVIS_BRANCH" == "travis" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    # prepare environment
+    docker run --rm --privileged multiarch/qemu-user-static:register --reset
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+
+    # get changed images
+    IMAGES=($(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/))
+
+    # build/tag/push images
+    cd images
+    for IMAGE in "${IMAGES[@]}"
+    do
+      IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
+      IMAGE_NAME=${IMAGE_PATH[1]}
+      PLATFORM=${IMAGE_PATH[2]}
+      TAG=$(grep "ENV IMAGE_VERSION" Dockerfile | awk 'NF>1{print $NF}')
+      if [ -z $TAG ]; then
+        TAG="latest"
+      fi
+      echo "============"
+      echo $IMAGE_NAME
+      echo $PLATFORM
+      echo $TAG
+      echo "============"
+      # ./build.sh $IMAGE_NAME $PLATFORM
+      # ./tag.sh $IMAGE_NAME $TAG $PLATFORM
+      # ./push.sh $IMAGE_NAME $TAG $PLATFORM
+    done
+  fi
