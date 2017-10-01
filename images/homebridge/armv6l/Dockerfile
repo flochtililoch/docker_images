@@ -1,6 +1,7 @@
 FROM flochtililoch/armv6l-node:6.9.3
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-02-19
+ENV REFRESHED_ON 2017-10-01
+ENV VERSION 0.4.26
 
 RUN \
   # Update system
@@ -13,16 +14,4 @@ RUN \
 
 RUN \
   # Install Homebridge
-  npm install homebridge@0.4.16 -g --unsafe-perm
-
-RUN \
-  # Install Homebridge Misfit Bolt plugin
-  npm install homebridge-misfit-bolt@0.1.4 -g && \
-
-  # Install Homebridge LIRC Accessory plugin
-  npm install homebridge-lirc-accessory@0.0.1 -g && \
-
-  # Install Homebridge Pivot Power Genius plugin
-  npm install homebridge-pivot-power-genius@0.0.2 -g
-
-CMD homebridge
+  npm install homebridge@${VERSION} -g --unsafe-perm

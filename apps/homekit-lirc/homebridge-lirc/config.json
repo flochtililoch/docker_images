@@ -1,28 +1,12 @@
 {
   "bridge": {
-    "name": "homebridge",
-    "username": "AB:CD:EF:FE:DC:BA",
-    "port": 51826,
+    "name": "homebridge-lirc",
+    "username": "AB:CD:EF:AB:CD:EF",
+    "port": 51827,
     "pin": "123-45-678"
   },
-  "description": "Homebridge",
-  "platforms": [
-    {
-      "platform": "Wink Pivot Power Genius",
-      "name": "Wink Pivot Power Genius",
-      "client_id": "changeme",
-      "client_secret": "changeme",
-      "username": "changeme",
-      "password": "changeme",
-      "outlets": [
-        {
-          "uuid":"4fba6ed4-b0fc-49c2-ba13-205556fda97b_0",
-          "hapService": "Lightbulb",
-          "name": "Light"
-        }
-      ]
-    }
-  ],
+  "description": "HomeKit bridge to LIRC accessories",
+  "platforms": [],
   "accessories": [
     {
       "accessory": "homebridge-lirc-accessory.LIRC Accessory",

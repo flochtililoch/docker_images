@@ -1,0 +1,13 @@
+version: "2"
+services:
+  homebridge-wink:
+    container_name: homebridge-wink
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-wink"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "51829:51829"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge-wink:/root/.homebridge

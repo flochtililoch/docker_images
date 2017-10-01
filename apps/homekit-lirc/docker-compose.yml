@@ -10,12 +10,16 @@ services:
     volumes:
     - ./lirc-state-api:/root
     - /var/run/lirc:/var/run/lirc
-  homebridge:
-    extends:
-      file: ../common/services.yml
-      service: homebridge
-    image: "${MAINTAINER}/${PLATFORM}-homebridge"
+  homebridge-lirc:
+    container_name: homebridge-lirc
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-lirc"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "51827:51827"
     volumes:
-    - ./homebridge:/root/.homebridge
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge-lirc:/root/.homebridge
     depends_on:
     - lirc-state-api
