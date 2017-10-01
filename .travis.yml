@@ -19,7 +19,7 @@ script:
       IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
       IMAGE_NAME=${IMAGE_PATH[1]}
       PLATFORM=${IMAGE_PATH[2]}
-      TAG=$(grep "ENV IMAGE_VERSION" Dockerfile | awk 'NF>1{print $NF}')
+      TAG=$(grep "ENV IMAGE_VERSION" $IMAGE_PATH | awk 'NF>1{print $NF}')
       if [ -z $TAG ]; then
         TAG="latest"
       fi
