@@ -13,21 +13,22 @@ script:
     IMAGES=($(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/))
 
     # build/tag/push images
-    cd images
     for IMAGE in "${IMAGES[@]}"
     do
-      IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
+      IMAGE_PATH=$(echo $IMAGE | tr "/" "\\n")
       IMAGE_NAME=${IMAGE_PATH[1]}
       PLATFORM=${IMAGE_PATH[2]}
-      TAG=$(grep "ENV IMAGE_VERSION" Dockerfile | awk 'NF>1{print $NF}')
+      TAG=$(grep "ENV IMAGE_VERSION" $IMAGE_PATH | awk 'NF>1{print $NF}')
       if [ -z $TAG ]; then
         TAG="latest"
       fi
       echo "============"
+      echo $IMAGE_PATH
       echo $IMAGE_NAME
       echo $PLATFORM
       echo $TAG
       echo "============"
+      # cd images
       # ./build.sh $IMAGE_NAME $PLATFORM
       # ./tag.sh $IMAGE_NAME $TAG $PLATFORM
       # ./push.sh $IMAGE_NAME $TAG $PLATFORM
