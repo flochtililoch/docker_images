@@ -1,4 +1,4 @@
-.travis.yml FROM resin/rpi-raspbian:jessie-20170111
+FROM resin/rpi-raspbian
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2017-10-01
 ENV VERSION 6.9.3
