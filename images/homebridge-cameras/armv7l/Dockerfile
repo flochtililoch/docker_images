@@ -1,7 +1,12 @@
-FROM flochtililoch/armv7l-homebridge
+FROM flochtililoch/armv7l-homebridge:0.4.26
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2017-10-01
 ENV VERSION 0.0.3
+
+RUN \
+  # Update system
+  apt-get update && \
+  apt-get upgrade -y
 
 RUN \
   # Install wget
