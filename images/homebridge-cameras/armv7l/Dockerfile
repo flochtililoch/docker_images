@@ -3,6 +3,8 @@ MAINTAINER flochtililoch
 ENV REFRESHED_ON 2017-10-01
 ENV VERSION 0.0.3
 
+RUN [ "cross-build-start" ]
+
 RUN \
   # Update system
   apt-get update && \
@@ -20,5 +22,7 @@ RUN \
 RUN \
   # Install Homebridge Camera ffmpeg plugin (OMX mod)
   npm install homebridge-camera-ffmpeg-omx@${VERSION} -g
+
+RUN [ "cross-build-end" ]
 
 CMD homebridge
