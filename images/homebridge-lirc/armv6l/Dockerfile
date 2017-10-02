@@ -7,7 +7,7 @@ RUN [ "cross-build-start" ]
 
 RUN \
   # Install Homebridge LIRC Accessory plugin
-  npm install homebridge-lirc-accessory@${VERSION} -g && \
+  npm install homebridge-lirc-accessory@${VERSION} -g
 
 RUN [ "cross-build-end" ]
 
