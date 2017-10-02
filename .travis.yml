@@ -20,17 +20,21 @@ script:
       IMAGE_NAME=${IMAGE_PATH[1]}
       PLATFORM=${IMAGE_PATH[2]}
 
-      # built it
+      echo "Building $IMAGE_NAME for platform $PLATFORM"
       ./build.sh $IMAGE_NAME $PLATFORM
 
-      # tag it
       TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
       if [ ! -z $TAG ]; then
+        echo "Tagging $IMAGE_NAME for platform $PLATFORM with tag $TAG"
         ./tag.sh $IMAGE_NAME $TAG $PLATFORM
+
+        echo "Pushing $IMAGE_NAME for platform $PLATFORM with tag $TAG"
+        ./push.sh $IMAGE_NAME $TAG $PLATFORM
       fi
+      echo "Tagging $IMAGE_NAME for platform $PLATFORM with tag latest"
       ./tag.sh $IMAGE_NAME latest $PLATFORM
-      
-      # push it
-      ./push.sh $IMAGE_NAME $TAG $PLATFORM
+
+      echo "Pushing $IMAGE_NAME for platform $PLATFORM with tag latest"
+      ./push.sh $IMAGE_NAME latest $PLATFORM
     done
   fi
