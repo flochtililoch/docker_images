@@ -1,7 +1,7 @@
 version: "2"
 services:
   homebridge-wink:
-    container_name: homebridge-wink
+    container_name: homekit-wink.homebridge-wink
     image: "${MAINTAINER}/${PLATFORM}-homebridge-wink"
     restart: always
     privileged: true

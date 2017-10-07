@@ -1,7 +1,7 @@
 version: "2"
 services:
   homebridge-cameras:
-    container_name: homebridge-cameras
+    container_name: homekit-cameras.homebridge-cameras
     image: "${MAINTAINER}/${PLATFORM}-homebridge-cameras"
     restart: always
     privileged: true

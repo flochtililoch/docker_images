@@ -1,6 +1,6 @@
 {
   "bridge": {
-    "name": "homebridge-lirc",
+    "name": "LIRC",
     "username": "AB:CD:EF:AB:CD:EF",
     "port": 51827,
     "pin": "123-45-678"

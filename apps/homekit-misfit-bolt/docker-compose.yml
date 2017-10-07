@@ -1,7 +1,7 @@
 version: "2"
 services:
   misfit-bolt-http:
-    container_name: misfit-bolt-http
+    container_name: homekit-misfit-bolt.misfit-bolt-http
     image: "${MAINTAINER}/${PLATFORM}-misfit-bolt-http"
     restart: always
     command: misfit-bolt-http -p 3000

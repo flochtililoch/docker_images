@@ -1,6 +1,6 @@
 {
   "bridge": {
-    "name": "homebridge-cameras",
+    "name": "Cameras",
     "username": "AB:CD:EF:AB:CD:EF",
     "port": 51826,
     "pin": "123-45-678"

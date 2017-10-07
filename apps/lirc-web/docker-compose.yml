@@ -1,7 +1,20 @@
 version: "2"
 services:
+  lirc:
+    container_name: lirc-web.lirc
+    image: "${MAINTAINER}/${PLATFORM}-lirc"
+    restart: always
+    command: /usr/sbin/lircd --nodaemon --driver=default --connect=localhost:8765
+    privileged: true
+    network_mode: host
+    volumes:
+    - /lib/modules:/lib/modules
+    - ./lirc:/etc/lirc
+    - /var/run/lirc:/var/run/lirc
+    devices:
+    - /dev/mem:/dev/mem
   lirc-web:
-    container_name: lirc-web
+    container_name: lirc-web.lirc-web
     image: "${MAINTAINER}/${PLATFORM}-lirc-web"
     restart: always
     command: lirc_web
