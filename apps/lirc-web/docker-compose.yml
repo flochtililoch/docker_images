@@ -4,7 +4,7 @@ services:
     container_name: lirc-web.lirc
     image: "${MAINTAINER}/${PLATFORM}-lirc"
     restart: always
-    command: /usr/sbin/lircd --nodaemon --driver=default --connect=localhost:8765
+    command: /usr/sbin/lircd --nodaemon --driver=default --connect=localhost:8765  --pidfile=/var/run/lirc/lirc-web.lirc.pid
     privileged: true
     network_mode: host
     volumes:
