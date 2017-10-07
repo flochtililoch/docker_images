@@ -4,7 +4,7 @@ services:
     container_name: homekit-lirc.lirc
     image: "${MAINTAINER}/${PLATFORM}-lirc"
     restart: always
-    command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0 --listen=0.0.0.0:8765 --pidfile=/var/run/lirc/homekit-lirc.lirc.pid
+    command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0 --listen=0.0.0.0:8765
     privileged: true
     network_mode: host
     volumes:
@@ -40,3 +40,15 @@ services:
     - ./homebridge-lirc:/root/.homebridge
     depends_on:
     - lirc-state-api
+  lirc-web:
+    container_name: homekit-lirc.lirc-web
+    image: "${MAINTAINER}/${PLATFORM}-lirc-web"
+    restart: always
+    command: lirc_web
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./lirc-web:/root
+    - /var/run/lirc:/var/run/lirc
+    depends_on:
+    - lirc
