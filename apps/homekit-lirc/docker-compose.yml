@@ -1,17 +1,34 @@
 version: "2"
 services:
+  lirc:
+    container_name: homekit-lirc.lirc
+    image: "${MAINTAINER}/${PLATFORM}-lirc"
+    restart: always
+    command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0 --listen=0.0.0.0:8765
+    privileged: true
+    network_mode: host
+    volumes:
+    - /lib/modules:/lib/modules
+    - ./lirc:/etc/lirc
+    - /var/run/lirc:/var/run/lirc
+    devices:
+    - /dev/mem:/dev/mem
   lirc-state-api:
-    container_name: lirc-state-api
+    container_name: homekit-lirc.lirc-state-api
     image: "${MAINTAINER}/${PLATFORM}-lirc-state-api"
     restart: always
     command: lirc-state-api -c=/root/config.json -p=3001
+    environment:
+    - DEBUG=lirc*
     ports:
     - "3001:3001"
     volumes:
     - ./lirc-state-api:/root
     - /var/run/lirc:/var/run/lirc
+    depends_on:
+    - lirc
   homebridge-lirc:
-    container_name: homebridge-lirc
+    container_name: homekit-lirc.homebridge-lirc
     image: "${MAINTAINER}/${PLATFORM}-homebridge-lirc"
     restart: always
     privileged: true
@@ -23,3 +40,15 @@ services:
     - ./homebridge-lirc:/root/.homebridge
     depends_on:
     - lirc-state-api
+  lirc-web:
+    container_name: homekit-lirc.lirc-web
+    image: "${MAINTAINER}/${PLATFORM}-lirc-web"
+    restart: always
+    command: lirc_web
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./lirc-web:/root
+    - /var/run/lirc:/var/run/lirc
+    depends_on:
+    - lirc
