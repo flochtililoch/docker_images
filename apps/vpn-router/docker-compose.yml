@@ -1,7 +1,7 @@
 version: "2"
 services:
   vpn:
-    container_name: openvpn-client
+    container_name: vpn-router.openvpn-client
     image: "${MAINTAINER}/${PLATFORM}-openvpn-client"
     restart: always
     command: openvpn --config /var/openvpn/openvpn.ovpn --auth-nocache --mute-replay-warnings
@@ -10,7 +10,7 @@ services:
     volumes:
     - ./openvpn-client:/var/openvpn
   prepare-dhcp:
-    container_name: prepare-dhcp
+    container_name: vpn-router.prepare-dhcp
     image: "${MAINTAINER}/${PLATFORM}-networking"
     command: /prepare-dhcp/run.sh
     privileged: true
@@ -22,7 +22,7 @@ services:
     depends_on:
     - vpn
   dhcp:
-    container_name: isc-dhcp-server
+    container_name: vpn-router.isc-dhcp-server
     image: "${MAINTAINER}/${PLATFORM}-isc-dhcp-server"
     restart: always
     command: eth0

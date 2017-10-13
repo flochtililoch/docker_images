@@ -14,7 +14,7 @@ services:
     volumes:
     - /var/run/dbus:/var/run/dbus
   homebridge-misfit-bolt:
-    container_name: homebridge-misfit-bolt
+    container_name: homekit-misfit-bolt.homebridge-misfit-bolt
     image: "${MAINTAINER}/${PLATFORM}-homebridge-misfit-bolt"
     restart: always
     privileged: true
