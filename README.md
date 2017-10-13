@@ -1,100 +1,109 @@
 # Dockers
 
-Repository hosting docker images representations (Dockerfile) and apps configurations. Most images are meant to be built on Raspberry PI platforms.
+A repository to organize container based applications with multi platform support.
 
 
-## Images definitions
-
-### Directory structure
+## Directory structure
 
 ```
 [root]
  │
- ├─ apps
- │  ├─ <app_name>
- │  │   ├── <container_name>
- │  │   │    ├── config
- │  │   │    └── ...
- │  │   └── docker-compose.yml
- │  │
- │  ├─ run.sh
+ ├─ apps                            # Root directory of all applications
+ │  ├─ <app>                        # Root directory of an application
+ │  │   ├── <service>               # Directory hosting files specifics to a service
+ │  │   │    ├── config             # i.e. a configuration folder
+ │  │   │    └── ...                #      or a volume exposed to the container.
+ │  │   └── docker-compose.yml      # Defines the composition of every services of the app
  │  └── ...
  │
- └─ images
-    ├─ <image_base_name>
-    │   └── <platform_id>
-    │        └── Dockerfile
-    ├── ...
-    │
-    ├─ build.sh
-    └─ MAINTAINER
+ ├─ images                          # Root directory of all images
+ │  ├─ <image>                      # Root directory of an image
+ │  │   └── <platform>              # String representing the platform as returned by the `uname -m` command.
+ │  │        └── Dockerfile         # See [Dockerfile](https://docs.docker.com/engine/reference/builder/).
+ │  └─ ...
+ │
+ └─ MAINTAINER                      # Text file containing the name of the maintainer
 ```
 
-#### `<app_name>`
+The convention established by this directory structure is reflected in the usage of provided scripts, and their resulting images and container names.
 
-Name of the group of services as defined in [`docker-compose.yml`](#docker-composeyml).
+## Apps
 
-#### `<container_name>`
+### docker-compose conventions
+- Each service that needs to expose specific host files to container must use a sub directory named after the service.
+- Container name of a service must use following convention: `<app-name>.<service-name>`. i.e. `<homekit-lirc.lirc>`.
 
-Name of the container representing the service as defined in [`docker-compose.yml`](#docker-composeyml).
 
-#### `docker-compose.yml`
+### Running apps
+Note: `cd` into the `apps` directory first.
 
-See [docker-compose.yml](https://docs.docker.com/compose/compose-file/).
-
-#### `run.sh`
-
-Script to run the app represented by its [`docker-compose.yml`](#docker-composeyml).
-
-*Usage:*
 ```bash
-./run.sh <app_name> [run <container_name>]
+$ ./run.sh <app> [mode] [service]
 ```
 
-#### `<image_base_name>`
+Arguments:
+- `<app>`: directory name hosting the app definition
+- `[mode]`: (optional) Defaults to `up -d` (brings the app up in daemon mode. Can be used to `down` the app or `run` a specific service.
+- `[service]`: (optional) Used in combination with `mode` set to `run`. Allows to run a specific service standalone.
 
-Spaceless string representing the image. It will be used by the build scripts to properly map to the correct files. Used to generate images names.
 
-#### `<platform_id>`
+## Images
 
-String representing the platform as returned by the `uname -m` command. Used to generate images names.
+### Dockerfile conventions
 
-#### `Dockerfile`
+- images should define an environment variable `ENV VERSION X.Y.Z`. The version number should ideally reflect the version of the software installed by the app, and will be used by CI to tag/push the image (on the top of being tagged `latest`).
 
-See [Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
-#### `build.sh`
+### Maintaining images
 
-Script to build the image as specified in the `Dockerfile`. Image name will be named using the following pattern: `<MAINTAINER>/<platform_id>-<image_base_name>`.
+Notes:
+- Before running these scripts, `cd` into the `images` directory.
+- Every command below use the same kind of arguments. Here is a description of what they are:
+  - `<my_image>`: (required) same name given to the directory hosting the Dockerfile (in the structure above, `<image>`).
+  - `[plaform]`: (optional) Default to current platform as returned by the `uname -m` command.
+  - `[tag]`: (optional) Default to `latest`. Represents the docker tag.
 
-*Usage:*
+
+#### Building
+
 ```bash
-./build.sh <image_base_name>
+$ ./build.sh <my_image> [platform]
 ```
 
-#### `MAINTAINER`
-
-Text file containing the name of the maintainer. Used when generating images names.
+This will build a docker image with the provided configuration in the Dockerfile. The image will be named using the MAINTAINER file, the image directory name and the platform, i.e. `flochtililoch/armv7l-openvpn-client`.
 
 
-## Existing Images Definitions
+#### Creating
 
-- `homebridge`: [Homebridge](https://github.com/nfarina/homebridge) (with [homebridge-misfit-bolt](https://github.com/flochtililoch/homebridge-misfit-bolt) plugin)
-- `lirc`: [LIRC](http://lirc.org)
-- `lirc-web`: [LIRC Web](https://github.com/alexbain/lirc_web)
-- `misfit-bolt-http`: [Misfit Bolt HTTP](https://github.com/flochtililoch/misfit-bolt-http)
-- `node`: [NodeJS](https://nodejs.org/en/)
-- `shairport-sync`: [Shairport Sync for C.H.I.P.](https://github.com/mikebrady/shairport-sync)
-- `ipsec-vpn-server`: [IPSec VPN on Raspberry Pi](https://github.com/hwdsl2/docker-ipsec-vpn-server)
+```bash
+$ ./create.sh <my_image>
+```
 
-## Built Images
+This will create a scaffold or directories / Dockerfiles for `armv6l` / `armv7l` / `x86_64` platforms.
 
-These are direct links to pre-built images from their Dockerfile representation.
 
-- `homebridge`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-homebridge/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-homebridge/)
-- `lirc`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-lirc/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-lirc/)
-- `lirc-web`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-lirc-web/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-lirc-web/)
-- `misfit-bolt-http`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-misfit-bolt-http/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-misfit-bolt-http/)
-- `node`: [armv6l](https://hub.docker.com/r/flochtililoch/armv6l-node/) | [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-node/)
-- `shairport-sync`: [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-ipsec-vpn-server/)
-- `ipsec-vpn-server`: [armv7l](https://hub.docker.com/r/flochtililoch/armv7l-shairport-sync/)
+#### Pulling
+
+```bash
+$ ./pull.sh <my_image> [tag] [platform]
+```
+
+This will pull a remote image locally. Shorthand to typing `docker pull maintainer/platform-imagename`.
+
+
+#### Tagging
+
+```bash
+$ ./tag.sh <my_image> [tag] [platform]
+```
+
+This will tag a local image using the latest image id. Shorthand to typing `docker tag <id> <image>:<tag>`.
+
+
+#### Pushing
+
+```bash
+$ ./push.sh <my_image> [tag] [platform]
+```
+
+This will push a local image to docker hub.
