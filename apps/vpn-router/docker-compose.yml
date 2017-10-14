@@ -1,6 +1,6 @@
 version: "2"
 services:
-  vpn:
+  openvpn-client:
     container_name: vpn-router.openvpn-client
     image: "${MAINTAINER}/${PLATFORM}-openvpn-client"
     restart: always
@@ -20,7 +20,7 @@ services:
     - ./prepare-dhcp:/prepare-dhcp
     - ./isc-dhcp-server:/isc-dhcp-server
     depends_on:
-    - vpn
+    - openvpn-client
   dhcp:
     container_name: vpn-router.isc-dhcp-server
     image: "${MAINTAINER}/${PLATFORM}-isc-dhcp-server"

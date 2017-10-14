@@ -1,7 +1,7 @@
 version: "2"
 services:
-  homebridge-cameras:
-    container_name: homekit-cameras.homebridge-cameras
+  homebridge:
+    container_name: homekit-cameras.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-cameras"
     restart: always
     privileged: true
@@ -10,7 +10,7 @@ services:
     - "51826:51826"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge-cameras:/root/.homebridge
+    - ./homebridge:/root/.homebridge
     - /dev/vchiq:/dev/vchiq
     devices:
     - /dev/vchiq:/dev/vchiq

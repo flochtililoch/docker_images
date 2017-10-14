@@ -27,8 +27,8 @@ services:
     - /var/run/lirc:/var/run/lirc
     depends_on:
     - lirc
-  homebridge-lirc:
-    container_name: homekit-lirc.homebridge-lirc
+  homebridge:
+    container_name: homekit-lirc.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-lirc"
     restart: always
     privileged: true
@@ -37,7 +37,7 @@ services:
     - "51827:51827"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge-lirc:/root/.homebridge
+    - ./homebridge:/root/.homebridge
     depends_on:
     - lirc-state-api
   lirc-web:

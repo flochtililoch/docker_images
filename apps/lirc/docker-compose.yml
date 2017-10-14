@@ -1,7 +1,7 @@
 version: "2"
 services:
   lirc:
-    container_name: lirc
+    container_name: lirc.lirc
     image: "${MAINTAINER}/${PLATFORM}-lirc"
     restart: always
     command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0 --listen=0.0.0.0:8765

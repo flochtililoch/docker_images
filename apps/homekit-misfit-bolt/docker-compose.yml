@@ -13,8 +13,8 @@ services:
     - "3000:3000"
     volumes:
     - /var/run/dbus:/var/run/dbus
-  homebridge-misfit-bolt:
-    container_name: homekit-misfit-bolt.homebridge-misfit-bolt
+  homebridge:
+    container_name: homekit-misfit-bolt.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-misfit-bolt"
     restart: always
     privileged: true
@@ -23,6 +23,6 @@ services:
     - "51828:51828"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge-misfit-bolt:/root/.homebridge
+    - ./homebridge:/root/.homebridge
     depends_on:
     - misfit-bolt-http

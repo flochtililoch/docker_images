@@ -1,7 +1,7 @@
 version: "2"
 services:
-  homebridge-wink:
-    container_name: homekit-wink.homebridge-wink
+  homebridge:
+    container_name: homekit-wink.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-wink"
     restart: always
     privileged: true
@@ -10,4 +10,4 @@ services:
     - "51829:51829"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge-wink:/root/.homebridge
+    - ./homebridge:/root/.homebridge

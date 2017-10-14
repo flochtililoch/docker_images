@@ -1,0 +1,21 @@
+{
+  "bridge": {
+    "name": "Home Assistant",
+    "username": "AB:CD:EF:AB:CD:EF",
+    "port": 51830,
+    "pin": "123-45-678"
+  },
+  "description": "HomeKit bridge to Home Assistant platform",
+  "platforms": [
+    {
+      "platform": "HomeAssistant",
+      "name": "HomeAssistant",
+      "host": "http://localhost:8123",
+      "password": "changeme",
+      "supported_types": ["automation", "binary_sensor", "climate", "cover", "device_tracker", "fan", "group", "input_boolean", "light", "lock", "media_player", "remote", "scene", "sensor", "switch"],
+      "default_visibility": "hidden",
+      "logging": true,
+      "verify_ssl": true
+    }
+  ]
+}

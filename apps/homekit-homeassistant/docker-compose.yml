@@ -1,0 +1,26 @@
+version: "2"
+services:
+  home-assistant:
+    container_name: homekit-homeassistant.home-assistant
+    image: "homeassistant/raspberrypi2-homeassistant"
+    restart: always
+    privileged: true
+    ports:
+    - "8123:8123"
+    volumes:
+    - ./home-assistant:/config
+    devices:
+    - /dev/ttyACM0:/dev/ttyACM0
+  homebridge:
+    container_name: homekit-homeassistant.homebridge
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-homeassistant"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "51829:51829"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ./homebridge:/root/.homebridge
+    depends_on:
+    - home-assistant

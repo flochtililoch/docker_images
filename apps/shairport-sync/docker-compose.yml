@@ -1,7 +1,7 @@
 version: "2"
 services:
   lirc:
-    container_name: shairport-sync
+    container_name: shairport-sync.shairport-sync
     image: "${MAINTAINER}/${PLATFORM}-shairport-sync"
     restart: always
     command: shairport-sync -c /root/shairport-sync/shairport-sync.conf

@@ -1,7 +1,7 @@
 version: "2"
 services:
   portainer:
-    container_name: portainer
+    container_name: portainer.portainer
     image: portainer/portainer:arm
     restart: always
     ports:

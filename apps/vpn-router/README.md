@@ -2,10 +2,12 @@
 
 Connect your Apple TV to your Raspberry PI via ethernet, and have its traffic routed through a VPN.
 
-## Setup (Raspberry PI)
+
+## Setup
+
 - Copy VPN configuration to `openvpn-client/openvpn.ovpn`
 - Configure static IP for eth0:
-  ```sh
+  ```bash
   $ cat /etc/network/interfaces.d/eth0
   allow-hotplug eth0
   iface eth0 inet static
@@ -14,8 +16,13 @@ Connect your Apple TV to your Raspberry PI via ethernet, and have its traffic ro
   gateway 10.8.0.10
   ```
 
+
 ## Start app
 
 ```bash
 $ ./run.sh vpn-router/
 ```
+
+
+## Inspiration
+

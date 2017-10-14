@@ -1,7 +1,7 @@
 version: "2"
 services:
   vpn:
-    container_name: ipsec-vpn-server
+    container_name: vpn.ipsec-vpn-server
     image: "${MAINTAINER}/${PLATFORM}-ipsec-vpn-server"
     restart: always
     privileged: true
