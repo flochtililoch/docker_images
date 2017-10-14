@@ -2,7 +2,7 @@ version: "2"
 services:
   home-assistant:
     container_name: homekit-homeassistant.home-assistant
-    image: "homeassistant/raspberrypi2-homeassistant"
+    image: "homeassistant/raspberrypi2-homeassistant:0.55"
     restart: always
     privileged: true
     ports:
