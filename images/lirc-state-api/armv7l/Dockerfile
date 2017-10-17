@@ -1,6 +1,9 @@
-FROM flochtililoch/armv7l-node:6.8.1
+FROM flochtililoch/armv7l-node:6.9.3
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-01-04
+ENV REFRESHED_ON 2017-10-17
+ENV VERSION 0.0.3
+
+RUN [ "cross-build-start" ]
 
 RUN \
   # Update system
@@ -12,6 +15,8 @@ RUN \
   apt-get install lirc -y
 
 RUN \
-  npm install -g lirc-state-api@0.0.2
+  npm install -g lirc-state-api@${VERSION}
 
-CMD bash
+RUN [ "cross-build-end" ]
+
+CMD lirc-state-api -c=/root/config.json -p=3001
