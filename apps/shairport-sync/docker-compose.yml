@@ -9,7 +9,7 @@ services:
     volumes:
     - /var/run/dbus:/var/run/dbus
     - /dev/shm:/dev/shm
-    - ./config:/root/shairport-sync
+    - ../../config/shairport-sync/config:/root/shairport-sync
     devices:
     - /dev/snd:/dev/snd
 #    group_add: # should be supported from docker-compose 1.9 onwards  https://github.com/docker/compose/pull/3709

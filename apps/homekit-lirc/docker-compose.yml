@@ -9,7 +9,7 @@ services:
     network_mode: host
     volumes:
     - /lib/modules:/lib/modules
-    - ./lirc:/etc/lirc
+    - ../../config/homekit-lirc/lirc:/etc/lirc
     - /var/run/lirc:/var/run/lirc
     devices:
     - /dev/mem:/dev/mem
@@ -23,7 +23,7 @@ services:
     ports:
     - "3001:3001"
     volumes:
-    - ./lirc-state-api:/root
+    - ../../config/homekit-lirc/lirc-state-api:/root
     - /var/run/lirc:/var/run/lirc
     depends_on:
     - lirc
@@ -37,7 +37,7 @@ services:
     - "51827:51827"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge:/root/.homebridge
+    - ../../config/homekit-lirc/homebridge:/root/.homebridge
     depends_on:
     - lirc-state-api
   lirc-web:
@@ -48,7 +48,7 @@ services:
     ports:
     - "3000:3000"
     volumes:
-    - ./lirc-web:/root
+    - ../../config/homekit-lirc/lirc-web:/root
     - /var/run/lirc:/var/run/lirc
     depends_on:
     - lirc

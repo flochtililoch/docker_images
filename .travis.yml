@@ -2,6 +2,8 @@ sudo: required
 services:
 - docker
 language: bash
+git:
+  submodules: false
 script:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

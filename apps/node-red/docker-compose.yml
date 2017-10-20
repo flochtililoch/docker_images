@@ -9,7 +9,7 @@ services:
     ports:
     - "1880:1880"
     volumes:
-    - ./node-red-data:/root/.node-red
+    - ../../config/node-red/node-red:/root/.node-red
     depends_on:
     - mosquitto
     - bluetooth-mqtt-proxy
@@ -22,8 +22,8 @@ services:
     - "1883:1883"
     - "9001:9001"
     volumes:
-    - ./mosquitto/config:/mqtt/config
-    - ./mosquitto/data:/mqtt/data
+    - ../../config/node-red/mosquitto/config:/mqtt/config
+    - ../../config/node-red/mosquitto/data:/mqtt/data
   bluetooth-mqtt-proxy:
     container_name: node-red.bluetooth-mqtt-proxy
     image: "${MAINTAINER}/${PLATFORM}-bluetooth-mqtt-proxy"
@@ -34,4 +34,4 @@ services:
     network_mode: host
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./bluetooth-mqtt-proxy:/root/.bluetooth-mqtt-proxy
+    - ../../config/node-red/bluetooth-mqtt-proxy:/root/.bluetooth-mqtt-proxy

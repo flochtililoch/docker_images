@@ -23,6 +23,6 @@ services:
     - "51828:51828"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge:/root/.homebridge
+    - ../../config/homekit-misfit-bolt/homebridge:/root/.homebridge
     depends_on:
     - misfit-bolt-http
