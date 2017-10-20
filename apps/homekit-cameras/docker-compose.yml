@@ -10,7 +10,7 @@ services:
     - "51826:51826"
     volumes:
     - /var/run/dbus:/var/run/dbus
-    - ./homebridge:/root/.homebridge
+    - ../../config/homekit-cameras/homebridge:/root/.homebridge
     - /dev/vchiq:/dev/vchiq
     devices:
     - /dev/vchiq:/dev/vchiq

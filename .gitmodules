@@ -4,3 +4,6 @@
 [submodule "images/ipsec-vpn-server/armv7l"]
 	path = images/ipsec-vpn-server/armv7l
 	url = https://github.com/flochtililoch/docker-ipsec-vpn-server.git
+[submodule "config"]
+	path = config
+	url = https://gitlab.com/flochtililoch/config.git

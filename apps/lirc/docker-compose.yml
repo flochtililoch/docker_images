@@ -9,7 +9,7 @@ services:
     network_mode: host
     volumes:
     - /lib/modules:/lib/modules
-    - ./lirc:/etc/lirc
+    - ../../config/lirc/lirc:/etc/lirc
     - /var/run/lirc:/var/run/lirc
     devices:
     - /dev/mem:/dev/mem
