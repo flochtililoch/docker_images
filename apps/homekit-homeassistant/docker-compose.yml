@@ -14,15 +14,12 @@ services:
   homebridge:
     container_name: homekit-homeassistant.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-homeassistant"
-    command: sh -c '/root/wait-for.sh home-assistant:8123 -- homebridge'
+    command: sh -c '/wait-for home-assistant:8123 -- homebridge'
     restart: always
-    privileged: true
-    network_mode: host
     ports:
-    - "51829:51829"
+    - "50000:50000"
     volumes:
     - /var/run/dbus:/var/run/dbus
     - ../../config/homekit-homeassistant/homebridge:/root/.homebridge
-    - ../../scripts/wait-for.sh:/root/wait-for.sh
     depends_on:
     - home-assistant
