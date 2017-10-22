@@ -15,6 +15,6 @@ RUN \
 
 RUN [ "cross-build-end" ]
 
-COPY ../wait-for /wait-for
+COPY ./wait-for /wait-for
 
 CMD homebridge
