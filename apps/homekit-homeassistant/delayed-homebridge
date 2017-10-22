@@ -49,8 +49,8 @@ const fetchState = () => {
           console.log(`Found all entities! Done.`);
 
           const homebridge = spawn('homebridge');
-          homebridge.stdout.on('data', console.log);
-          homebridge.stderr.on('data', console.log);
+          homebridge.stdout.on('data', (data) => console.log(`${data}`));
+          homebridge.stderr.on('data', (data) => console.log(`${data}`));
           homebridge.on('close', (code) => {
             console.log(`homebridge exited with code ${code}`);
           });
