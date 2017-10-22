@@ -5,7 +5,7 @@ const http = require('http');
 const { spawn } = require('child_process');
 const url = require('url');
 
-const plaform = config.platforms[0];
+const platform = config.platforms[0];
 const { host, password } = platform;
 const { hostname, port } = url.parse(host);
 const path = '/api/states';

@@ -14,7 +14,7 @@ services:
   homebridge:
     container_name: homekit-homeassistant.homebridge
     image: "${MAINTAINER}/${PLATFORM}-homebridge-homeassistant"
-    command: delayed-homebridge
+    command: ./delayed-homebridge
     restart: always
     ports:
     - "50000:50000"
