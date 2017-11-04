@@ -7,6 +7,8 @@ RUN [ "cross-build-start" ]
 
 RUN \
   # Update system
+  echo "deb http://archive.raspberrypi.org/debian/ jessie main" >> /etc/apt/sources.list.d/raspberrypi.list && \
+  apt-key adv --keyserver keyserver.ubuntu.com --recv 82B129927FA3303E && \
   apt-get update && \
   apt-get upgrade -y
 
@@ -21,3 +23,4 @@ RUN \
 RUN [ "cross-build-end" ]
 
 CMD homebridge
+
