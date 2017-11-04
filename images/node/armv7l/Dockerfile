@@ -1,11 +1,11 @@
 FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-10-01
+ENV REFRESHED_ON 2017-11-04
 ENV VERSION 6.9.3
 
 RUN [ "cross-build-start" ]
 
-ENV ARCH armv6l
+ENV ARCH armv7l
 ADD https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-${ARCH}.tar.gz /
 RUN \
   cd /usr/local/ && \
