@@ -1,0 +1,14 @@
+version: "2"
+services:
+  homebridge:
+    container_name: homekit-hdmi.homebridge
+    image: "${MAINTAINER}/${PLATFORM}-homebridge-cec-accessory"
+    restart: always
+    privileged: true
+    network_mode: host
+    ports:
+    - "50030:50030"
+    volumes:
+    - /var/run/dbus:/var/run/dbus
+    - ../../config/homekit-hdmi/homebridge:/root/.homebridge
+
