@@ -1,6 +1,9 @@
-FROM resin/armv7hf-debian
+FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-09-03
+ENV REFRESHED_ON 2017-11-12
+ENV VERSION 0.0.1
+
+RUN [ "cross-build-start" ]
 
 RUN \
   # Update system
@@ -14,5 +17,6 @@ RUN \
 RUN touch /var/lib/dhcp/dhcpd.leases
 VOLUME ["/var/lib/dhcp", "/etc/dhcp"]
 
-ENTRYPOINT ["/usr/sbin/dhcpd", "-d", "--no-pid"]
+RUN [ "cross-build-end" ]
 
+ENTRYPOINT ["/usr/sbin/dhcpd", "-d", "--no-pid"]

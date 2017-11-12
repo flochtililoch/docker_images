@@ -1,6 +1,9 @@
-FROM resin/armv7hf-debian
+FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-09-04
+ENV REFRESHED_ON 2017-11-12
+ENV VERSION 0.0.1
+
+RUN [ "cross-build-start" ]
 
 RUN \
   # Update system
@@ -10,3 +13,5 @@ RUN \
 RUN \
   # Install IPTables
   apt-get install iptables -y
+
+RUN [ "cross-build-end" ]
