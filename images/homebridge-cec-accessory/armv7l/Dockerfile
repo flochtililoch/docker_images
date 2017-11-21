@@ -1,7 +1,7 @@
 FROM flochtililoch/armv7l-homebridge:0.4.26
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-11-12
-ENV VERSION 0.1.1
+ENV REFRESHED_ON 2017-11-20
+ENV VERSION 0.3.0
 
 RUN [ "cross-build-start" ]
 
