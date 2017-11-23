@@ -48,7 +48,7 @@ services:
     restart: always
     command: lirc_web
     ports:
-    - "8000:80"
+    - "8000:8000"
     volumes:
     - ../../config/homekit-lirc/lirc-web:/root
     - /var/run/lirc:/var/run/lirc
