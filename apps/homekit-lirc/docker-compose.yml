@@ -7,6 +7,8 @@ services:
     command: /usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0 --listen=0.0.0.0:8765
     privileged: true
     network_mode: host
+    ports:
+    - "8765:8765"
     volumes:
     - /lib/modules:/lib/modules
     - ../../config/homekit-lirc/lirc:/etc/lirc
@@ -34,7 +36,7 @@ services:
     privileged: true
     network_mode: host
     ports:
-    - "51827:51827"
+    - "50010:50010"
     volumes:
     - /var/run/dbus:/var/run/dbus
     - ../../config/homekit-lirc/homebridge:/root/.homebridge
@@ -46,7 +48,7 @@ services:
     restart: always
     command: lirc_web
     ports:
-    - "3000:3000"
+    - "8000:80"
     volumes:
     - ../../config/homekit-lirc/lirc-web:/root
     - /var/run/lirc:/var/run/lirc
