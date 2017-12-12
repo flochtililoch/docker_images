@@ -1,0 +1,18 @@
+version: "2"
+services:
+  portainer:
+    container_name: admin.portainer
+    image: "${MAINTAINER}/${PLATFORM}-portainer"
+    restart: always
+    ports:
+    - "80:9000"
+    volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock'
+  watchtower:
+    container_name: admin.watchtower
+    image: "${MAINTAINER}/${PLATFORM}-watchtower"
+    restart: always
+    ports:
+    - "80:9000"
+    volumes:
+    - '/var/run/docker.sock:/var/run/docker.sock'
