@@ -54,7 +54,6 @@ script:
       TAG=latest
       echo "Cloning $IMAGE_NAME for platform $PLATFORM with tag $TAG"
       ./clone.sh $IMAGE_NAME $TAG $PLATFORM
-      fi
     done
     cd ..
 
