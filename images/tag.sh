@@ -11,4 +11,5 @@ NAME=$(basename $1)
 TAG=${2:-latest}
 PLATFORM=${3:-$(uname -m)}
 ID=${4:-$(docker images | grep $MAINTAINER/$PLATFORM-$NAME | head -1 | awk '{print $3}')}
+
 docker tag $ID $MAINTAINER/$PLATFORM-$NAME:$TAG
