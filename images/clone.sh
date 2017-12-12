@@ -11,9 +11,9 @@ NAME=$(basename $1)
 TAG=${2:-latest}
 PLATFORM=${3:-$(uname -m)}
 IMAGE="$MAINTAINER/$PLATFORM-$NAME"
-REFFILE="$NAME/$PLATFORM"
+REFFILE="$NAME/$PLATFORM/ref"
 REF=$(cat $REFFILE)
 
 docker pull $REF
 docker tag $REF $IMAGE:$TAG
-docker push $REF $IMAGE:$TAG
+docker push $IMAGE:$TAG
