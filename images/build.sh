@@ -12,5 +12,4 @@ PLATFORM=${2:-$(uname -m)}
 IMAGE="$MAINTAINER/$PLATFORM-$NAME"
 DOCKERFILE="$NAME/$PLATFORM"
 
-echo "Building image $IMAGE from $DOCKERFILE"
 docker build -t $IMAGE $DOCKERFILE
