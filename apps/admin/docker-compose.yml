@@ -5,7 +5,7 @@ services:
     image: "${MAINTAINER}/${PLATFORM}-portainer"
     restart: always
     ports:
-    - "80:9000"
+    - "9000:9000"
     volumes:
     - '/var/run/docker.sock:/var/run/docker.sock'
   watchtower:
