@@ -12,7 +12,5 @@ services:
     container_name: admin.watchtower
     image: "${MAINTAINER}/${PLATFORM}-watchtower"
     restart: always
-    ports:
-    - "80:9000"
     volumes:
     - '/var/run/docker.sock:/var/run/docker.sock'
