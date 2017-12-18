@@ -1,0 +1,11 @@
+version: "2"
+services:
+  homebridge:
+    container_name: gogs.gogs
+    image: "${MAINTAINER}/${PLATFORM}-gogs"
+    restart: always
+    ports:
+    - "10022:22"
+    - "10080:3000"
+    volumes:
+    - /var/gogs:/data
