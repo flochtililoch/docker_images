@@ -1,0 +1,20 @@
+version: "2"
+services:
+  mysql:
+    container_name: git.mysql
+    image: "${MAINTAINER}/${PLATFORM}-mysql"
+    restart: always
+    volumes:
+    - ../../config/git/mysql/conf.d:/etc/mysql/conf.d
+    - ../../data/git/mysql:/data
+  gogs:
+    container_name: git.gogs
+    image: "${MAINTAINER}/${PLATFORM}-gogs"
+    restart: always
+    ports:
+    - "10022:22"
+    - "10080:3000"
+    volumes:
+    - ../../data/git/gogs:/data
+    depends_on:
+    - mysql
