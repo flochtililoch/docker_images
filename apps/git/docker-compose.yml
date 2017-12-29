@@ -1,12 +1,11 @@
 version: "2"
 services:
-  mysql:
-    container_name: git.mysql
-    image: "${MAINTAINER}/${PLATFORM}-mysql"
+  mariadb:
+    container_name: git.mariadb
+    image: "${MAINTAINER}/${PLATFORM}-mariadb"
     restart: always
     volumes:
-    - ../../config/git/mysql/conf.d:/etc/mysql/conf.d
-    - ../../data/git/mysql:/data
+    - ../../config/git/mariadb:/config
   gogs:
     container_name: git.gogs
     image: "${MAINTAINER}/${PLATFORM}-gogs"
@@ -17,4 +16,4 @@ services:
     volumes:
     - ../../data/git/gogs:/data
     depends_on:
-    - mysql
+    - mariadb
