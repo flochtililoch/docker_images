@@ -4,8 +4,10 @@ services:
     container_name: git.mariadb
     image: "${MAINTAINER}/${PLATFORM}-mariadb"
     restart: always
+    environment:
+    - MYSQL_ROOT_PASSWORD=gogs
     volumes:
-    - ../../config/git/mariadb:/config
+    - ../../data/git/mariadb:/config
   gogs:
     container_name: git.gogs
     image: "${MAINTAINER}/${PLATFORM}-gogs"
