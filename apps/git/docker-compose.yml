@@ -1,21 +1,15 @@
 version: "2"
 services:
-  mariadb:
-    container_name: git.mariadb
-    image: "${MAINTAINER}/${PLATFORM}-mariadb"
-    restart: always
-    environment:
-    - MYSQL_ROOT_PASSWORD=gogs
-    volumes:
-    - ../../data/git/mariadb:/config
-  gogs:
-    container_name: git.gogs
-    image: "${MAINTAINER}/${PLATFORM}-gogs"
+  gitlab:
+    container_name: git.gitlab
+    hostname: gitlab.local
+    image: "${MAINTAINER}/${PLATFORM}-gitlab"
     restart: always
     ports:
-    - "10022:22"
-    - "10080:3000"
+    - "443:443"
+    - "80:80"
+    - "22:22"
     volumes:
-    - ../../data/git/gogs:/data
-    depends_on:
-    - mariadb
+    - ../../data/git/gitlab/config:/etc/gitlab
+    - ../../data/git/gitlab/logs:/var/log/gitlab
+    - ../../data/git/gitlab/data:/var/opt/gitlab
