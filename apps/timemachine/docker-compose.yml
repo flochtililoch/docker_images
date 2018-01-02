@@ -1,0 +1,12 @@
+version: "2"
+services:
+  timemachine:
+    container_name: timemachine.timemachine
+    hostname: timemachine.local
+    image: "${MAINTAINER}/${PLATFORM}-timemachine"
+    restart: always
+    ports:
+    - "548:548"
+    - "636:636"
+    volumes:
+    - ../../data/timemachine/timemachine:/timemachine
