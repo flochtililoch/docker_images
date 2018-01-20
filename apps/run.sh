@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP=$(basename $1)
-HOST_IP_V6=$(sudo ifconfig wlan0 | grep 'inet6 addr' | xargs | cut -d' ' -f3)
+HOST_IP_V6=$(sudo ifconfig wlan0 | grep 'inet6 addr' | xargs | cut -d' ' -f3 | cut -d'/' -f1)
 HOST_IP=$(sudo ifconfig wlan0 | grep 'inet addr' | xargs | cut -d' ' -f2 | cut -d':' -f2)
 MAINTAINER=$(cat ../MAINTAINER)
 MODE=${2:-up -d}
