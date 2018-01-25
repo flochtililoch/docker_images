@@ -6,7 +6,17 @@
   docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 
   # get changed images
+  echo "##################"
+  git diff --name-only $TRAVIS_COMMIT_RANGE
+  echo "##################"
+  git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/
+  echo "##################"
+  git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep Dockerfile
+  echo "##################"
+
+  echo "------------------"
   IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep Dockerfile)
+  echo "------------------"
 
   if [ ! -z $IMAGES ]; then
     # for each image
