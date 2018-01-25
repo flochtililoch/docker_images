@@ -18,21 +18,21 @@
       PLATFORM=${IMAGE_PATH[2]}
 
       echo "Building $IMAGE_NAME for platform $PLATFORM"
-      ./build.sh $IMAGE_NAME $PLATFORM
+      echo "#./build.sh $IMAGE_NAME $PLATFORM"
 
       TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
       if [ ! -z $TAG ]; then
         echo "Tagging $IMAGE_NAME for platform $PLATFORM with tag $TAG"
-        ./tag.sh $IMAGE_NAME $TAG $PLATFORM
+        echo "#./tag.sh $IMAGE_NAME $TAG $PLATFORM"
 
         echo "Pushing $IMAGE_NAME for platform $PLATFORM with tag $TAG"
-        ./push.sh $IMAGE_NAME $TAG $PLATFORM
+        echo "#./push.sh $IMAGE_NAME $TAG $PLATFORM"
       fi
       echo "Tagging $IMAGE_NAME for platform $PLATFORM with tag latest"
-      ./tag.sh $IMAGE_NAME latest $PLATFORM
+      echo "#./tag.sh $IMAGE_NAME latest $PLATFORM"
 
       echo "Pushing $IMAGE_NAME for platform $PLATFORM with tag latest"
-      ./push.sh $IMAGE_NAME latest $PLATFORM
+      echo "#./push.sh $IMAGE_NAME latest $PLATFORM"
     done
     cd ..
 
@@ -52,7 +52,7 @@
       PLATFORM=${IMAGE_PATH[2]}
       TAG=latest
       echo "Cloning $IMAGE_NAME for platform $PLATFORM with tag $TAG"
-      ./clone.sh $IMAGE_NAME $TAG $PLATFORM
+      echo "#./clone.sh $IMAGE_NAME $TAG $PLATFORM"
     done
     cd ..
 
