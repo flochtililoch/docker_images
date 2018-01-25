@@ -1,4 +1,4 @@
-FROM flochtililoch/armv7l-node:6.9.3
+FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2018-01-24
 ENV VERSION 718f53d
