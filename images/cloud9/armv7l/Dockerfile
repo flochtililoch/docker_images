@@ -6,10 +6,19 @@ ENV VERSION 718f53d
 RUN [ "cross-build-start" ]
 
 RUN \
-  apt-get install -y build-essential git && \
+  # Update system
+  apt-get update && \
+  apt-get upgrade -y
+
+RUN \
+  # Install Git + Dependencies
+  apt-get install -y build-essential git curl python
+  
+RUN \
+  # Install Cloud9
   git clone git://github.com/c9/core.git c9sdk && \
-  git checkout ${VERSION} && \
   cd c9sdk && \
+  git checkout ${VERSION} && \
   scripts/install-sdk.sh
 
 RUN [ "cross-build-end" ]
