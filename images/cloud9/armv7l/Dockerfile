@@ -12,7 +12,7 @@ RUN \
 
 RUN \
   # Install Cloud9 and dependencies
-  apt-get install -y build-essential git && \
+  apt-get install -y build-essential git wget && \
   git clone git://github.com/c9/core.git c9sdk && \
   cd c9sdk && \
   git checkout ${VERSION} && \
