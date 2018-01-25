@@ -9,17 +9,22 @@ if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
   IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep Dockerfile)
 
   if [ ! -z $IMAGES ]; then
+
+    echo "Building images"
+    echo "==============="
+
     # for each image
     cd images
     for IMAGE in "${IMAGES[@]}"
     do
       IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
-      IMAGE_NAME=${IMAGE_PATH[1]}
-      PLATFORM=${IMAGE_PATH[2]}
+      IMAGE_ARRAY=(${IMAGE_PATH//;/ })
+      IMAGE_NAME=${IMAGE_ARRAY[1]}
+      PLATFORM=${IMAGE_ARRAY[2]}
 
       echo "Building $IMAGE_NAME for platform $PLATFORM"
       ./build.sh $IMAGE_NAME $PLATFORM
-
+      
       TAG=$(grep "ENV VERSION" ../$IMAGE | awk 'NF>1{print $NF}')
       if [ ! -z $TAG ]; then
         echo "Tagging $IMAGE_NAME for platform $PLATFORM with tag $TAG"
@@ -40,16 +45,19 @@ if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
 
   # get changed images references
   IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep ref)
+  if [ ! -z $IMAGES ]; then
 
-  if [ ! -z $IMAGES_REFS ]; then
+    echo "Cloning images"
+    echo "==============="
 
     # for each image reference
     cd images
     for IMAGE in "${IMAGES[@]}"
     do
       IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
-      IMAGE_NAME=${IMAGE_PATH[1]}
-      PLATFORM=${IMAGE_PATH[2]}
+      IMAGE_ARRAY=(${IMAGE_PATH//;/ })
+      IMAGE_NAME=${IMAGE_ARRAY[1]}
+      PLATFORM=${IMAGE_ARRAY[2]}
       TAG=latest
       echo "Cloning $IMAGE_NAME for platform $PLATFORM with tag $TAG"
       ./clone.sh $IMAGE_NAME $TAG $PLATFORM
