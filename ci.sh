@@ -16,6 +16,7 @@
 
   echo "------------------"
   IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep Dockerfile)
+  echo $IMAGES
   echo "------------------"
 
   if [ ! -z $IMAGES ]; then
