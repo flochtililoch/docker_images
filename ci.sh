@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
+if [ $TRAVIS_BRANCH == "cloud9" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
   # prepare environment
   docker run --rm --privileged multiarch/qemu-user-static:register --reset
   docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
