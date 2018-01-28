@@ -1,15 +1,15 @@
 version: "2"
 services:
-  gitlab:
-    container_name: git.gitlab
-    hostname: gitlab.local
-    image: "${MAINTAINER}/${PLATFORM}-gitlab"
+  gogs:
+    container_name: git.gogs
+    hostname: git.local
+    image: "${MAINTAINER}/${PLATFORM}-gogs"
     restart: always
+    environment:
+    - SOCAT_LINK=false
+    - RUN_CROND=true
     ports:
-    - "443:443"
-    - "80:80"
-    - "22:22"
+    - "10080:10080"
+    - "10022:22"
     volumes:
-    - ../../data/git/gitlab/config:/etc/gitlab
-    - ../../data/git/gitlab/logs:/var/log/gitlab
-    - ../../data/git/gitlab/data:/var/opt/gitlab
+    - ../../data/git/gogs:/data
