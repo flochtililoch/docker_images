@@ -9,4 +9,4 @@ services:
     - "548:548"
     - "636:636"
     volumes:
-    - ../../data/timemachine/timemachine:/timemachine
+    - /media/ssd/timemachine:/timemachine
