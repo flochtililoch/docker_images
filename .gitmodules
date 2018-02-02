@@ -6,4 +6,4 @@
 	url = https://github.com/flochtililoch/docker-ipsec-vpn-server.git
 [submodule "config"]
 	path = config
-	url = git@gitlab.local:florent/config.git
+	url = ssh://git@chip.local:10022/florent/config.git
