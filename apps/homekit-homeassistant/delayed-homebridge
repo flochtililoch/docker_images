@@ -40,7 +40,7 @@ const fetchState = () => {
     res.on('end', () => {
       try {
         const parsedData = JSON.parse(rawData);
-        const foundEntities = parsedData.map(entity => entity.entity_id);
+        const foundEntities = parsedData.map(entity => entity.attributes.new_entity_id);
         const missingEntities = config.requiredEntities.filter(entity => !foundEntities.includes(entity));
         if (missingEntities.length) {
           console.log(`Missing entities: ${missingEntities.join(', ')}. Retrying...`);
