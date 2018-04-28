@@ -4,6 +4,3 @@
 [submodule "images/ipsec-vpn-server/armv7l"]
 	path = images/ipsec-vpn-server/armv7l
 	url = https://github.com/flochtililoch/docker-ipsec-vpn-server.git
-[submodule "config"]
-	path = config
-	url = ssh://git@chip.local:10022/florent/config.git

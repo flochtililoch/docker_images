@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
+if [ $TRAVIS_BRANCH == "disabled" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
   # prepare environment
   docker run --rm --privileged multiarch/qemu-user-static:register --reset
   docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 
   # get changed images
-  IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep Dockerfile)
+  IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep Dockerfile)
 
   if [ ! -z $IMAGES ]; then
 
@@ -14,7 +14,6 @@ if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
     echo "==============="
 
     # for each image
-    cd images
     for IMAGE in "${IMAGES[@]}"
     do
       IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
@@ -39,19 +38,17 @@ if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
       echo "Pushing $IMAGE_NAME for platform $PLATFORM with tag latest"
       ./push.sh $IMAGE_NAME latest $PLATFORM
     done
-    cd ..
 
   fi
 
   # get changed images references
-  IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep images/ | grep ref)
+  IMAGES=$(git diff --name-only $TRAVIS_COMMIT_RANGE | grep ref)
   if [ ! -z $IMAGES ]; then
 
     echo "Cloning images"
     echo "==============="
 
     # for each image reference
-    cd images
     for IMAGE in "${IMAGES[@]}"
     do
       IMAGE_PATH=$(echo $IMAGE | tr "/" "\n")
