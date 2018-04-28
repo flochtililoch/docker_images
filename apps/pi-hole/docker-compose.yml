@@ -7,10 +7,15 @@ services:
     environment:
       ServerIP: ${HOST_IP}
       ServerIPv6: ${HOST_IP_V6}
+      # S6_LOGGING: 1
+    dns:
+    - 127.0.0.1
+    - 8.8.8.8
     ports:
     - "53:53/tcp"
     - "53:53/udp"
-    - "80:8000/tcp"
+    - "80:80"
     volumes:
     - ../../config/pihole/etc/pihole/:/etc/pihole/
     - ../../config/pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/
+    # - ../../config/pihole/var/log:/var/log/
