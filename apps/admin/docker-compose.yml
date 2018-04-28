@@ -13,4 +13,13 @@ services:
     image: "${MAINTAINER}/${PLATFORM}-watchtower"
     restart: always
     volumes:
-    - '/var/run/docker.sock:/var/run/docker.sock'
+    - /var/run/docker.sock:/var/run/docker.sock
+  cloud9:
+    container_name: admin.cloud9
+    image: "${MAINTAINER}/${PLATFORM}-cloud9"
+    restart: always
+    command: node /c9sdk/server.js -w /data
+    ports:
+    - "8181:8181"
+    volumes:
+    - ../../:/data
