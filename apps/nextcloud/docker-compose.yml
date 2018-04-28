@@ -1,0 +1,21 @@
+version: "2"
+services:
+  lirc:
+    container_name: nextcloud.nextcloud
+    image: "${MAINTAINER}/${PLATFORM}-nextcloud"
+    restart: always
+    environment:
+    - SQLITE_DATABASE=nextcloud
+    - NEXTCLOUD_ADMIN_USER=florent
+    - NEXTCLOUD_ADMIN_PASSWORD=P3@c4en@kk7npY?oHBiNHo=?hJ48KYFZhuQmp6NX@72(bbaT8*zX=RyRCbnZ(4Ht
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - type: volume
+        source: nextcloud
+        target: /var/www/html
+      - type: bind
+        source: /var/cloud/data
+        target: /var/www/html/data
+    
