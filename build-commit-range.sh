@@ -1,9 +1,9 @@
 #!/bin/bash
 
 COMMIT_RANGE=$1
-IMAGES=$(git diff --name-only $COMMIT_RANGE | grep Dockerfile)
+IMAGES=($(git diff --name-only $COMMIT_RANGE | grep Dockerfile))
 
-if [ ! -z $IMAGES ]; then
+if [ ! -z "$IMAGES" ]; then
 
   echo "Building images"
   echo "==============="
@@ -37,8 +37,8 @@ if [ ! -z $IMAGES ]; then
 fi
 
 # get changed images references
-IMAGES=$(git diff --name-only $COMMIT_RANGE | grep ref)
-if [ ! -z $IMAGES ]; then
+IMAGES=($(git diff --name-only $COMMIT_RANGE | grep ref))
+if [ ! -z "$IMAGES" ]; then
 
   echo "Cloning images"
   echo "==============="
