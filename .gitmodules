@@ -1,6 +1,6 @@
-[submodule "images/ipsec-vpn-server/armv6l"]
-	path = images/ipsec-vpn-server/armv6l
-	url = https://github.com/flochtililoch/docker-ipsec-vpn-server.git
-[submodule "images/ipsec-vpn-server/armv7l"]
-	path = images/ipsec-vpn-server/armv7l
-	url = https://github.com/flochtililoch/docker-ipsec-vpn-server.git
+[submodule "ipsec-vpn-server/armv6l"]
+	path = ipsec-vpn-server/armv6l
+	url = git@github.com:flochtililoch/docker-ipsec-vpn-server.git
+[submodule "ipsec-vpn-server/armv7l"]
+	path = ipsec-vpn-server/armv7l
+	url = git@github.com:flochtililoch/docker-ipsec-vpn-server.git
