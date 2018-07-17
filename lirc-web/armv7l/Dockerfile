@@ -1,6 +1,6 @@
 FROM flochtililoch/armv7l-node:5.5.0
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2017-01-04
+ENV REFRESHED_ON 2018-07-16
 
 RUN \
   # Update system
@@ -13,6 +13,6 @@ RUN \
 
 RUN \
   # Install lirc-web
-  npm install -g lirc_web@0.3.1
+  npm install -g git+https://git@github.com/flochtililoch/lirc_web#73c29aac1734a18e083780c4f49861063a4cff33
 
 CMD lirc_web
