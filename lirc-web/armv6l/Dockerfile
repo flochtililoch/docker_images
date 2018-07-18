@@ -1,4 +1,4 @@
-FROM flochtililoch/armv6l-node:5.5.0
+FROM flochtililoch/armv6l-node:6.9.3
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2018-07-17
 ENV VERSION 0.3.1
