@@ -14,6 +14,9 @@ RUN \
   # Install Home-assistant-pi and dependencies
   apt-get install -y build-essential git python python2.7-dev python-pip && \
   git clone git://github.com/nickmomrik/home-assistant-pi.git /home-assistant-pi && \
+  git clone https://github.com/raspberrypi/userland /userland && \
+  cd /userland && \
+  ./buildme && \
   cd /home-assistant-pi && \
   git checkout ${VERSION} && \
   pip install psutil && \
