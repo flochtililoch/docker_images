@@ -1,0 +1,3 @@
+LC_ALL=C.UTF-8
+LANG=C.UTF-8
+* * * * * /root/vdirsyncer_env/bin/vdirsyncer sync > /proc/1/fd/1 2>/proc/1/fd/2
