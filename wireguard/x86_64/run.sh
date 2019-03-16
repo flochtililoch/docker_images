@@ -1,37 +1,35 @@
 #!/bin/bash
 
-if [ "$PRIVKEY" == "" ]; then
-	PRIVKEY=$(wg genkey)
-	echo "ENV PRIVKEY not set; setting to $PRIVKEY"
+# Script from https://github.com/activeeos/wireguard-docker/blob/master/scripts/run.sh
+
+set -e
+
+# Install Wireguard. This has to be done dynamically since the kernel
+# module depends on the host kernel version.
+apt update
+apt install -y linux-headers-$(uname -r)
+apt install -y wireguard
+
+# Find a Wireguard interface
+interfaces=`find /etc/wireguard -type f`
+if [[ -z $interfaces ]]; then
+    echo "$(date): Interface not found in /etc/wireguard" >&2
+    exit 1
 fi
 
-echo "Your PUBKEY is $(echo $PRIVKEY | wg pubkey)"
+interface=`echo $interfaces | head -n 1`
 
-if [ "$PEERKEY" == "" ]; then
-	echo "ENV PEERKEY not set; giving up."
-	exit
-fi
+echo "$(date): Starting Wireguard"
+wg-quick up $interface
 
-if [ "$PEERADDR" != "" ]; then
-	PEERCMD="endpoint $PEERADDR"
-fi
+# Handle shutdown behavior
+finish () {
+    echo "$(date): Shutting down Wireguard"
+    wg-quick down $interface
+    exit 0
+}
 
-echo "Adding interface 'wg0'"
-ip link add dev wg0 type wireguard
+trap finish SIGTERM SIGINT SIGQUIT
 
-echo "Adding IP range for 'wg0'"
-ip addr add dev wg0 $OWNIP/$BLOCKSIZE
-
-echo "Setting up wireguard-specific options"
-echo "$PRIVKEY" > /tmp/privkey
-wg set wg0 private-key /tmp/privkey listen-port $LPORT peer $PEERKEY allowed-ips $OWNIP/$BLOCKSIZE $PEERCMD
-
-echo "Setting interface 'wg0' up"
-ip link set up wg0
-
-echo "Entering eternal loop, goodbye ,o/"
-
-while sleep 60; do
-	date
-	wg show
-done
+sleep infinity &
+wait $!

@@ -1,20 +1,17 @@
-FROM debian:stretch
+FROM ubuntu:16.04
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2018-11-11
+ENV REFRESHED_ON 2019-03-15
 
-RUN \
-  echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable.list && \
-  printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable && \
-  apt update && \
-  apt install wireguard -y
+RUN apt-get update -y && \
+    apt-get install -y software-properties-common iptables curl iproute2 ifupdown iputils-ping && \
+    echo resolvconf resolvconf/linkify-resolvconf boolean false | debconf-set-selections && \
+    echo "REPORT_ABSENT_SYMLINK=no" >> /etc/default/resolvconf && \
+    add-apt-repository --yes ppa:wireguard/wireguard && \
+    apt-get install resolvconf
+
+RUN [ "cross-build-end" ]
 
 COPY run.sh /run.sh
 
-ENV PRIVKEY=
-ENV PEERKEY=
-ENV LPORT=12345
-ENV OWNIP=192.168.0.1
-ENV BLOCKSIZE=16
-ENV PEERADDR=
-
-CMD /run.sh
+ENTRYPOINT ["/run.sh"]
+CMD []
