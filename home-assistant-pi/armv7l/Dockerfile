@@ -1,6 +1,6 @@
 FROM resin/armv7hf-debian-qemu
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2018-09-08
+ENV REFRESHED_ON 2019-08-11
 ENV VERSION 99ccdfc
 
 RUN [ "cross-build-start" ]
@@ -12,7 +12,7 @@ RUN \
 
 RUN \
   # Install Home-assistant-pi and dependencies
-  apt-get install -y build-essential cmake git python python2.7-dev python-pip && \
+  apt-get install -y build-essential cmake git libnss-mdns dbus avahi-discover avahi-utils python python2.7-dev python-pip && \
   git clone git://github.com/nickmomrik/home-assistant-pi.git /home-assistant-pi && \
   cd /home-assistant-pi && \
   git checkout ${VERSION} && \
@@ -26,4 +26,6 @@ RUN \
 
 RUN [ "cross-build-end" ]
 
-CMD python /home-assistant-pi/home-assistant-pi.py
+COPY ./home-assistant-pi.sh /usr/local/bin/home-assistant-pi.sh
+
+CMD /usr/local/bin/home-assistant-pi.sh
