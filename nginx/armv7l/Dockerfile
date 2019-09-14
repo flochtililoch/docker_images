@@ -1,4 +1,4 @@
-FROM resin/armv7hf-debian-qemu
+FROM balenalib/armv7hf-debian
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2019-09-14
 ENV VERSION 0.0.1
