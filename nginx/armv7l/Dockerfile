@@ -14,4 +14,4 @@ RUN \
 
 RUN [ "cross-build-end" ]
 
-ENTRYPOINT ["/etc/init.d/nginx", "start"]
+CMD /etc/init.d/nginx start
