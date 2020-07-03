@@ -58,13 +58,16 @@ RUN \
         -DPYTHON_INCLUDE_DIR="${PYTHON_INCLUDE_DIR}" .. && \
   make && \
   make install
+  
+RUN \
+  echo "cec" > "/usr/lib/python3.8/dist-packages/cec.pth"
 
 # Cleanup
 WORKDIR /root
 RUN \
  rm -rf cmake platform libcec raspberrypi-userland*
 
-ENV LD_LIBRARY_PATH=/opt/vc/lib:${LD_LIBRARY_PATH} PYTHONPATH=${PYTHONPATH}:/usr/lib/python3.6/site-packages
+ENV LD_LIBRARY_PATH=/opt/vc/lib:${LD_LIBRARY_PATH} PYTHONPATH=${PYTHONPATH}:/usr/lib/python3.8/dist-packages
 
 RUN \
   git clone git://github.com/konikvranik/pyCEC.git pyCEC && \
