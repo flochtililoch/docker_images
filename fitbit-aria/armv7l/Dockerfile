@@ -20,6 +20,8 @@ RUN \
 WORKDIR /root/helvetic
 RUN pip install -r requirements.txt
 
+WORKDIR /root/helvetic/helv_test
+
 RUN [ "cross-build-end" ]
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
