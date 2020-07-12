@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi2-python:2.7-build
+FROM balenalib/raspberrypi3-python:2.7-build
 MAINTAINER flochtililoch
 ENV REFRESHED_ON 2020-07-12
 
