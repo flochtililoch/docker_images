@@ -19,9 +19,6 @@ RUN \
 
 WORKDIR /root/helvetic
 RUN pip install -r requirements.txt
-  
-WORKDIR /root/helvetic/helv_test
-RUN python manage.py migrate
 
 RUN [ "cross-build-end" ]
 
