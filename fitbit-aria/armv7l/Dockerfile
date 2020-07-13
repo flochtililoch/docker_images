@@ -8,7 +8,7 @@ RUN \
   apt-get update && \
   apt-get upgrade -y
   
-ENV VERSION=28b47f407b2317dc477ed93b7c155d3cb4ea4960
+ENV VERSION=0e344f86fc19504684e6061b229b5f138e54af96
 WORKDIR /root
 ADD https://github.com/flochtililoch/helvetic/archive/${VERSION}.tar.gz ./
 RUN \
