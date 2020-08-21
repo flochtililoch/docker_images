@@ -15,8 +15,8 @@ RUN \
   npm config set unsafe-perm true 
 
 RUN \
-  # Install LIRC
-  apt-get install lirc -y
+  # Install LIRC and git
+  apt-get install lirc git -y
 
 RUN \
   # Install lirc-state-api
