@@ -1,7 +1,7 @@
 FROM flochtililoch/armv6l-node:6.9.3
 MAINTAINER flochtililoch
-ENV REFRESHED_ON 2020-08-22
-ENV VERSION 0.0.6
+ENV REFRESHED_ON 2020-08-24
+ENV VERSION 0.0.7
 
 RUN [ "cross-build-start" ]
 
